@@ -94,7 +94,7 @@ function draw()
 {
     mgr.draw();
     textSize(20);
-    print(buttonPressed);
+    console.log(buttonPressed);
 }
 
 function mousePressed()
@@ -108,25 +108,25 @@ function keyPressed()
     switch(key)
     {
         case '1':
-        print("1 is pressed");
+        console.log("1 is pressed");
             mgr.showScene( Intro );
             break;
         case '2':
-        print("2 is pressed");
+        console.log("2 is pressed");
 
             mgr.showScene( Profile );
             break;
         case '3':
-        print("3 is pressed");
+        console.log("3 is pressed");
 
             mgr.showScene( Game );
             break;
         case '4':
-        print("4 is pressed");
+        console.log("4 is pressed");
             mgr.showScene( Prompt );
             break;
         case '5':
-        print("5 is pressed");
+        console.log("5 is pressed");
             mgr.showScene( Outro );
             break;
     }

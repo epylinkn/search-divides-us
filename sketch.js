@@ -15,11 +15,15 @@ let inc;
 let edu_slider;
 let edu;
 
-let buttonText = "click me";
 let buttonPressed;
 
+let buttonW = 200;
+let buttonH = 50;
+
 function preload(){
-  map = loadImage('assets/notmanhattan.png');
+  roboto = loadFont('assets/RobotoMono.ttf');
+
+  map = loadImage('assets/island_bam.png');
 
   blackf = loadImage('assets/bf.jpg');
   whitef = loadImage('assets/wf.jpg');
@@ -31,35 +35,30 @@ function preload(){
   hispm = loadImage('assets/hm.jpg');
   asianm = loadImage('assets/am.jpg');
 
-  best = loadImage('assets/mask1.png');
-  average = loadImage('assets/mask2.png');
-  worst= loadImage('assets/mask3.png');
+  mask1a = loadImage('assets/mask1a.png');
+  mask1b = loadImage('assets/mask1b.png');
+  mask2a = loadImage('assets/mask2a.png');
+  mask2b = loadImage('assets/mask2b.png');
+  mask3a = loadImage('assets/mask3a.png');
+  mask3b = loadImage('assets/mask3b.png');
 
   you = blackf;
-  mask = average;
+  mask = mask2a;
 
 }
+
+
 function setup()
 {
     mgr = new SceneManager();
 
-    textAlign(CENTER);
-    createCanvas(1100, 700);
-
-    rectMode(CORNER);
-    fill(0);
-    rect(10,140,80,200);
-    fill(255);
-    text(buttonText, 10,140);
-
-    if (mouseIsPressed && mouseX > 10 && mouseX <90 && mouseY > 140 && mouseY <340){
-        buttonPressed == true;
-      }
-    else {
-        buttonPressed == false;
-      }
+    createCanvas(1100, 800);
 
     rectMode(CENTER);
+    textAlign(CENTER);
+
+    textFont(roboto);
+    textSize(16);
 
     race_slider = createSlider(0, 1000, 100);
     race = race_slider.value();
@@ -93,7 +92,6 @@ function showNextScene() {
 function draw()
 {
     mgr.draw();
-    textSize(20);
     console.log(buttonPressed);
 }
 
@@ -135,16 +133,26 @@ function keyPressed()
     mgr.keyPressed();
 }
 
+function button(x,y, buttonText){
+  push();
+  fill(225,0,225);
+  rect(x,y,buttonW,buttonH);
+  fill(255);
+  text(buttonText, x,y+5);
+  pop();
+}
 
 class Intro {
   draw() {
-      textAlign(CENTER);
       background(map,1);
       fill(255);
-      rect(width/2,height/2-10,500,100);
+      rect(width/2,height/2,500,200);
       fill(0);
-      text("Welcome to housingsearch.com!", width/2, height/2-20);
-      text("We're here to help you find the perfect home. :)", width/2, height/2+20);
+      text("Welcome to housingsearch.com!", width/2, height/2-30);
+      text("We're here to help you find the perfect home. :)", width/2, height/2);
+      text("TURN THE KNOBS TO START.", width/2, height/2+40);
+      // button(width/2,height/2+50, "START")
+
   }
 
 }
@@ -152,10 +160,13 @@ class Intro {
 class Profile {
   draw() {
       background(0);
+
+      button(width/2,height-100, "SEARCH");
+
       fill(255);
       text("First, tell us a little bit about who you are.", width/2, height/4);
-      text("you are this person!", width/2, height/2);
-      image(you, width/2-50,height/4+30,100,100);
+      text("you are this person!", width/2, height-height/3);
+      image(you, width/2-100,height/4+30,200,200);
 
       race = race_slider.value();
       inc = inc_slider.value();
@@ -211,25 +222,56 @@ class Profile {
 }
 
 class Game {
-  draw() {
-    next = "SEARCH!";
 
+  draw() {
     background(map,1);
 
     if (you==hispf || you==hispm){
-      mask = worst;
+      if (inc > 800){
+      mask = mask1b;
+      }
+      if (inc <= 800 && inc > 400){
+      mask = mask2a;
+      }
+      if (inc <= 400){
+      mask = mask3a;
+      }
     }
 
     if (you==blackf || you==blackm){
-      mask = worst;
+      if (inc > 800){
+      mask = mask1b;
+      }
+      if (inc <= 800 && inc > 400){
+      mask = mask2b;
+      }
+      if (inc <= 400){
+      mask = mask3b;
+      }
     }
 
     if (you==asianf || you==asianm){
-      mask = average;
+      if (inc > 800){
+      mask = mask1a;
+      }
+      if (inc <= 800 && inc > 400){
+      mask = mask2a;
+      }
+      if (inc <= 400){
+      mask = mask3a;
+      }
     }
 
     if (you==whitef || you==whitem){
-      mask = best;
+      if (inc > 800){
+      mask = mask1a;
+      }
+      if (inc <= 800 && inc > 400){
+      mask = mask1b;
+      }
+      if (inc <= 400){
+      mask = mask2a;
+      }
     }
 
     image(mask, 0,0,width,height);
@@ -237,22 +279,30 @@ class Game {
     // fill(255,0,0);
     // text("STUFF HAPPENS ON THE MAP!", width/2, height/2);
     image(you, width-100,0,100,100);
+    // button(width/2,height-100, "TRY AGAIN");
 
   }
 }
 
 class Prompt {
+
   draw() {
-    background(159,212,255);
-    fill(0);
+
+    background(0);
+    button(width/2,height-100, "I'M FEELING LUCKY");
+
+    fill(255);
     text("What did you think of your results? What if you tried something different?", width/2, height/2);
   }
 }
 
 
 class Outro {
+
     draw() {
       background(0);
+      button(width/2,height-100,"START OVER");
+
       fill(255);
       text("forcefeeding you the message of the game", width/2, height/2);
     }

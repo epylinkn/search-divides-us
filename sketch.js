@@ -1,3 +1,8 @@
+var portName = '/dev/cu.usbmodem14321';
+var options = { baudrate: 115200 };
+var serial;
+var inData;
+
 let mgr;
 let you;
 
@@ -8,6 +13,7 @@ let race;
 
 let inc_slider;
 let inc;
+
 
 // let age_slider;
 // let age;
@@ -20,10 +26,12 @@ let buttonPressed;
 let buttonW = 200;
 let buttonH = 50;
 
+let selections = {}
+
 function preload(){
   roboto = loadFont('assets/RobotoMono.ttf');
 
-  map = loadImage('assets/island_bam.png');
+  mapImage = loadImage('assets/island_bam.png');
 
   blackf = loadImage('assets/bf.jpg');
   whitef = loadImage('assets/wf.jpg');
@@ -48,8 +56,21 @@ function preload(){
 }
 
 
-function setup()
-{
+function setup() {
+  serial = new p5.SerialPort();
+  // serial.on('list', console.log);
+  serial.on('connected', serverConnected);
+  serial.on('open', portOpen);
+  serial.on('data', serialEvent);
+  serial.on('error', serialError);
+  serial.on('close', portClose);
+
+  serial.list();
+  serial.open(portName, options);
+  serial.clear();
+
+
+
     mgr = new SceneManager();
 
     createCanvas(1100, 800);
@@ -81,7 +102,7 @@ function setup()
     mgr.addScene ( Outro );
 
     // mgr.showNextScene();
-    mgr.showScene( Intro );
+    mgr.showScene( Debug );
 
 }
 
@@ -92,7 +113,7 @@ function showNextScene() {
 function draw()
 {
     mgr.draw();
-    console.log(buttonPressed);
+    // console.log(buttonPressed);
 }
 
 function mousePressed()
@@ -105,6 +126,9 @@ function keyPressed()
     // You can optionaly handle the key press at global level...
     switch(key)
     {
+        case '0':
+            mgr.showScene( Debug );
+            break;
         case '1':
         console.log("1 is pressed");
             mgr.showScene( Intro );
@@ -142,9 +166,16 @@ function button(x,y, buttonText){
   pop();
 }
 
+class Debug {
+  draw() {
+    background(0);
+    displaySelections();
+  }
+}
+
 class Intro {
   draw() {
-      background(map,1);
+      background(mapImage,1);
       fill(255);
       rect(width/2,height/2,500,200);
       fill(0);
@@ -152,7 +183,6 @@ class Intro {
       text("We're here to help you find the perfect home. :)", width/2, height/2);
       text("TURN THE KNOBS TO START.", width/2, height/2+40);
       // button(width/2,height/2+50, "START")
-
   }
 
 }
@@ -224,7 +254,7 @@ class Profile {
 class Game {
 
   draw() {
-    background(map,1);
+    background(mapImage,1);
 
     if (you==hispf || you==hispm){
       if (inc > 800){
@@ -306,4 +336,96 @@ class Outro {
       fill(255);
       text("forcefeeding you the message of the game", width/2, height/2);
     }
+}
+
+function serverConnected() {
+  print('connected to server.');
+}
+
+function portOpen() {
+  print('the serial port opened.')
+}
+
+// R1: 0-79
+// R2: 80-159
+// R3: 160-239
+// B1: 300
+// B2: 301
+// B3: 302
+function serialEvent() {
+  let inString = serial.readLine();
+
+  if (inString.length <= 0) return;
+
+  inData = Number(inString);
+  console.log("inData: ", inData);
+
+  // IT'S A BUTTON!
+  if (inData >= 300) {
+    switch(inData) {
+      case 300:
+        displayTitle("RESET PRESSED");
+        break;
+      case 301:
+        displayTitle("SEARCH PRESSED");
+        break;
+      case 302:
+        displayTitle("RANDOMIZE PRESSED");
+        break;
+    }
+    return;
+  }
+
+  if (inData >= 0 && inData < 80) {
+     // NB. we do 80, which we'll never hit so our range is really 0-4
+    selections.race = floor(map(inData, 0, 80, 0, 5));
+  }
+
+  if (inData >= 80 && inData < 160) {
+     // NB. we do 160, which we'll never hit so our range is really 0-3
+    selections.income = floor(map(inData, 80, 160, 0, 4));
+  }
+
+  if (inData >= 160 && inData < 240) {
+    // NB. we do 240, which we'll never hit so our range is really 0-3
+    selections.education = floor(map(inData, 160, 240, 0, 5));
+  }
+  console.log(selections);
+}
+
+function serialError(err) {
+  print('Something went wrong with the serial port. ' + err);
+}
+
+function portClose() {
+  print('The serial port closed.');
+}
+
+function displaySelections() {
+  if (!selections || Object.keys(selections).length == 0) return;
+
+  let i = 0;
+  let yHeight = windowHeight / Object.keys(selections).length;
+  for (let key in selections) {
+    let selection = selections[key];
+    push()
+    fill('magenta')
+    textAlign(CENTER, CENTER)
+    textSize(64)
+    text(key + ": " + selection, 300, i * yHeight, windowWidth, windowHeight)
+    pop()
+
+    i++;
+  }
+}
+
+function displayTitle(title) {
+  let maxFontSize = windowWidth / title.length
+
+  push()
+  fill('white')
+  textAlign(CENTER, CENTER)
+  textSize(64) // HACK
+  text(title, 0, 0, windowWidth, windowHeight)
+  pop()
 }

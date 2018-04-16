@@ -2,3 +2,6 @@ node_modules/
 .DS_Store
 
 *.ai
+*.psd
+
+package-lock.json

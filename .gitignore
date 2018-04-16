@@ -5,3 +5,4 @@ node_modules/
 *.psd
 
 package-lock.json
+yarn.lock

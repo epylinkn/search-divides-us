@@ -1,4 +1,4 @@
-var portName = '/dev/cu.usbmodem14321';
+var portName = '/dev/cu.usbmodem14621';
 var options = { baudrate: 115200 };
 var serial;
 var inData;
@@ -170,6 +170,10 @@ class Debug {
   draw() {
     background(0);
     displaySelections();
+
+    if (millis() < lastTitleAt) {
+      displayTitle(message);
+    }
   }
 }
 
@@ -184,7 +188,6 @@ class Intro {
       text("TURN THE KNOBS TO START.", width/2, height/2+40);
       // button(width/2,height/2+50, "START")
   }
-
 }
 
 class Profile {
@@ -364,13 +367,13 @@ function serialEvent() {
   if (inData >= 300) {
     switch(inData) {
       case 300:
-        displayTitle("RESET PRESSED");
+        debounceTitle("RESET PRESSED");
         break;
       case 301:
-        displayTitle("SEARCH PRESSED");
+        debounceTitle("SEARCH PRESSED");
         break;
       case 302:
-        displayTitle("RANDOMIZE PRESSED");
+        debounceTitle("RANDOMIZE PRESSED");
         break;
     }
     return;
@@ -419,13 +422,19 @@ function displaySelections() {
   }
 }
 
-function displayTitle(title) {
-  let maxFontSize = windowWidth / title.length
+let message;
+let lastTitleAt;
+function debounceTitle(title) {
+  lastTitleAt = millis() + 2000;
+  message = title;
+}
 
+function displayTitle(title) {
   push()
+  rectMode(CORNER)
   fill('white')
   textAlign(CENTER, CENTER)
-  textSize(64) // HACK
+  textSize(64)
   text(title, 0, 0, windowWidth, windowHeight)
   pop()
 }

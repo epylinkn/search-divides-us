@@ -173,28 +173,6 @@ function button(x,y, buttonText){
   pop();
 }
 
-class Prompt {
-  draw() {
-
-    background(0);
-    button(width/2,height-100, "I'M FEELING LUCKY");
-
-    fill(255);
-    text("What did you think of your results? What if you tried something different?", width/2, height/2);
-  }
-}
-
-class Outro {
-
-    draw() {
-      background(0);
-      button(width/2,height-100,"START OVER");
-
-      fill(255);
-      text("forcefeeding you the message of the game", width/2, height/2);
-    }
-}
-
 function serverConnected() {
   print('connected to server.');
 }

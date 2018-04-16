@@ -8,15 +8,6 @@ let you;
 
 let mask;
 
-let race_slider;
-let race;
-
-let inc_slider;
-let inc;
-
-let edu_slider;
-let edu;
-
 let buttonPressed;
 
 let buttonW = 200;
@@ -24,17 +15,17 @@ let buttonH = 50;
 
 let selections = {};
 let incomeLabels = [
+  "lower",
+  "middle",
+  "upper-middle",
+  "upper",
+];
+let raceLabels = [
   "black",
   "hispanic",
   "other",
   "asian",
   "white",
-];
-let raceLabels = [
-  "lower",
-  "middle",
-  "upper-middle",
-  "upper",
 ];
 let educationLabels = [
   "less-than-high-school",
@@ -85,37 +76,25 @@ function setup() {
   serial.open(portName, options);
   serial.clear();
 
-    // createCanvas(1100, 800);
-    createCanvas(windowWidth, windowHeight);
+  // createCanvas(1100, 800);
+  createCanvas(windowWidth, windowHeight);
 
-    rectMode(CENTER);
-    textAlign(CENTER);
+  rectMode(CENTER);
+  textAlign(CENTER);
 
-    textFont(roboto);
-    textSize(16);
+  textFont(roboto);
+  textSize(16);
 
-    race_slider = createSlider(0, 1000, 100);
-    race = race_slider.value();
-    race_slider.position(10, 10);
+  // Preload scenes. Preloading is normally optional
+  // ... but needed if showNextScene() is used.
+  mgr.addScene ( Intro );
+  mgr.addScene ( Profile );
+  mgr.addScene ( Game );
+  mgr.addScene ( Prompt );
+  mgr.addScene ( Outro );
 
-    inc_slider = createSlider(0, 1000, 100);
-    inc = inc_slider.value();
-    inc_slider.position(10, 50);
-
-    edu_slider = createSlider(0, 1000, 100);
-    edu = edu_slider.value();
-    edu_slider.position(10, 90);
-
-    // Preload scenes. Preloading is normally optional
-    // ... but needed if showNextScene() is used.
-    mgr.addScene ( Intro );
-    mgr.addScene ( Profile );
-    mgr.addScene ( Game );
-    mgr.addScene ( Prompt );
-    mgr.addScene ( Outro );
-
-    // mgr.showNextScene();
-    mgr.showScene( Intro );
+  // mgr.showNextScene();
+  mgr.showScene( Intro );
 }
 
 function showNextScene() {
@@ -158,63 +137,15 @@ function keyPressed() {
       mgr.showScene( Outro );
       break;
 
-    //== Income
-    case 'Q':
-      selections.income = 0;
-      break;
-    case 'W':
-      selections.income = 1;
-      break;
-    case 'E':
-      selections.income = 2;
-      break;
-    case 'R':
-      selections.income = 3;
-      break;
-
-    //== Race
-    case 'A':
-      selections.race = 0;
-      break;
-    case 'S':
-      selections.race = 1;
-      break;
-    case 'D':
-      selections.race = 2;
-      break;
-    case 'F':
-      selections.race = 3;
-      break;
-    case 'G':
-      selections.race = 4;
-      break;
-
-    //== Education
-    case 'Z':
-      selections.education = 0;
-      break;
-    case 'X':
-      selections.education = 1;
-      break;
-    case 'C':
-      selections.education = 2;
-      break;
-    case 'V':
-      selections.education = 3;
-      break;
-    case 'B':
-      selections.education = 4;
-      break;
-
-    case 'I':
-      pressedReset();
-      break;
-    case 'O':
-      pressedSearch();
-      break;
-    case 'P':
-      pressedRandom();
-      break;
+    // case 'I':
+    //   pressedReset();
+    //   break;
+    // case 'O':
+    //   pressedSearch();
+    //   break;
+    // case 'P':
+    //   pressedRandom();
+    //   break;
   }
 
   // dispatch via the SceneManager.
@@ -242,135 +173,7 @@ function button(x,y, buttonText){
   pop();
 }
 
-class Profile {
-  draw() {
-      background(0);
-
-      button(width/2,height-100, "SEARCH");
-
-      fill(255);
-      text("First, tell us a little bit about who you are.", width/2, height/4);
-      text("you are this person!", width/2, height-height/3);
-      image(you, width/2-100,height/4+30,200,200);
-
-      race = race_slider.value();
-      inc = inc_slider.value();
-      edu = edu_slider.value();
-
-      push();
-        textSize(14);
-        text("race is " + race, 200, 25);
-        text("income is " + inc, 200, 65);
-        text("edu is " + edu, 200, 105);
-      pop();
-
-      if (race >= 0 && race< 250) {
-        if (edu >= inc){
-          you = blackf;
-        }
-
-        else if (edu < inc){
-          you = blackm;
-        }
-      }
-
-      if (race >= 250 && race< 500) {
-        if (edu >= inc){
-          you = whitef;
-        }
-
-        if (edu < inc){
-          you = whitem;
-        }
-      }
-
-      if (race >= 500 && race<750) {
-        if (edu >= inc){
-          you = asianf;
-        }
-
-        if (edu < inc){
-          you = asianm;
-        }
-      }
-
-      if (race >= 750 && race<1000) {
-        if (edu >= inc){
-          you = hispf;
-        }
-
-        if (edu < inc){
-          you = hispm;
-        }
-      }
-    }
-}
-
-class Game {
-
-  draw() {
-    background(mapImage,1);
-
-    if (you==hispf || you==hispm){
-      if (inc > 800){
-      mask = mask1b;
-      }
-      if (inc <= 800 && inc > 400){
-      mask = mask2a;
-      }
-      if (inc <= 400){
-      mask = mask3a;
-      }
-    }
-
-    if (you==blackf || you==blackm){
-      if (inc > 800){
-      mask = mask1b;
-      }
-      if (inc <= 800 && inc > 400){
-      mask = mask2b;
-      }
-      if (inc <= 400){
-      mask = mask3b;
-      }
-    }
-
-    if (you==asianf || you==asianm){
-      if (inc > 800){
-      mask = mask1a;
-      }
-      if (inc <= 800 && inc > 400){
-      mask = mask2a;
-      }
-      if (inc <= 400){
-      mask = mask3a;
-      }
-    }
-
-    if (you==whitef || you==whitem){
-      if (inc > 800){
-      mask = mask1a;
-      }
-      if (inc <= 800 && inc > 400){
-      mask = mask1b;
-      }
-      if (inc <= 400){
-      mask = mask2a;
-      }
-    }
-
-    image(mask, 0,0,width,height);
-
-    // fill(255,0,0);
-    // text("STUFF HAPPENS ON THE MAP!", width/2, height/2);
-    image(you, width-100,0,100,100);
-    // button(width/2,height-100, "TRY AGAIN");
-
-  }
-}
-
 class Prompt {
-
   draw() {
 
     background(0);

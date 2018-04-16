@@ -22,7 +22,27 @@ let buttonPressed;
 let buttonW = 200;
 let buttonH = 50;
 
-let selections = {}
+let selections = {};
+let incomeLabels = [
+  "black",
+  "hispanic",
+  "other",
+  "asian",
+  "white",
+];
+let raceLabels = [
+  "lower",
+  "middle",
+  "upper-middle",
+  "upper",
+];
+let educationLabels = [
+  "less-than-high-school",
+  "high-school",
+  "some-college",
+  "bachelors",
+  "advanced"
+];
 
 function preload(){
   roboto = loadFont('assets/fonts/RobotoMono.ttf');
@@ -116,38 +136,93 @@ function mousePressed()
 
 function keyPressed()
 {
-    // You can optionaly handle the key press at global level...
-    switch(key)
-    {
-        case '0':
-            mgr.showScene( Debug );
-            break;
-        case '1':
-        console.log("1 is pressed");
-            mgr.showScene( Intro );
-            break;
-        case '2':
-        console.log("2 is pressed");
+  console.log(key, " is pressed");
+  switch(key) {
+    //== Scenes
+    case '0':
+      mgr.showScene( Debug );
+      break;
+    case '1':
+      mgr.showScene( Intro );
+      break;
+    case '2':
+      mgr.showScene( Profile );
+      break;
+    case '3':
+      mgr.showScene( Game );
+      break;
+    case '4':
+      mgr.showScene( Prompt );
+      break;
+    case '5':
+      mgr.showScene( Outro );
+      break;
 
-            mgr.showScene( Profile );
-            break;
-        case '3':
-        console.log("3 is pressed");
+    //== Income
+    case 'Q':
+      selections.income = 0;
+      break;
+    case 'W':
+      selections.income = 1;
+      break;
+    case 'E':
+      selections.income = 2;
+      break;
+    case 'R':
+      selections.income = 3;
+      break;
 
-            mgr.showScene( Game );
-            break;
-        case '4':
-        console.log("4 is pressed");
-            mgr.showScene( Prompt );
-            break;
-        case '5':
-        console.log("5 is pressed");
-            mgr.showScene( Outro );
-            break;
-    }
+    //== Income
+    case 'Q':
+      selections.income = 0;
+      break;
+    case 'W':
+      selections.income = 1;
+      break;
+    case 'E':
+      selections.income = 2;
+      break;
+    case 'R':
+      selections.income = 3;
+      break;
 
-    // ... then dispatch via the SceneManager.
-    mgr.keyPressed();
+    //== Race
+    case 'A':
+      selections.race = 0;
+      break;
+    case 'S':
+      selections.race = 1;
+      break;
+    case 'D':
+      selections.race = 2;
+      break;
+    case 'F':
+      selections.race = 3;
+      break;
+    case 'G':
+      selections.race = 4;
+      break;
+
+    //== Education
+    case 'Z':
+      selections.education = 0;
+      break;
+    case 'X':
+      selections.education = 1;
+      break;
+    case 'C':
+      selections.education = 2;
+      break;
+    case 'V':
+      selections.education = 3;
+      break;
+    case 'B':
+      selections.education = 4;
+      break;
+  }
+
+  // dispatch via the SceneManager.
+  mgr.keyPressed();
 }
 
 function button(x,y, buttonText){
@@ -363,19 +438,18 @@ function serialEvent() {
 
   if (inData >= 0 && inData < 80) {
      // NB. we do 80, which we'll never hit so our range is really 0-4
-    selections.race = floor(map(inData, 0, 80, 0, 5));
+    selections.income = floor(map(inData, 0, 80, 0, 5));
   }
 
   if (inData >= 80 && inData < 160) {
      // NB. we do 160, which we'll never hit so our range is really 0-3
-    selections.income = floor(map(inData, 80, 160, 0, 4));
+    selections.race = floor(map(inData, 80, 160, 0, 4));
   }
 
   if (inData >= 160 && inData < 240) {
     // NB. we do 240, which we'll never hit so our range is really 0-3
     selections.education = floor(map(inData, 160, 240, 0, 5));
   }
-  console.log(selections);
 }
 
 function serialError(err) {

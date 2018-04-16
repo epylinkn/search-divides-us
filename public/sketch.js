@@ -14,10 +14,6 @@ let race;
 let inc_slider;
 let inc;
 
-
-// let age_slider;
-// let age;
-
 let edu_slider;
 let edu;
 
@@ -52,11 +48,12 @@ function preload(){
 
   you = blackf;
   mask = mask2a;
-
 }
 
 
 function setup() {
+  mgr = new SceneManager();
+
   serial = new p5.SerialPort();
   // serial.on('list', console.log);
   serial.on('connected', serverConnected);
@@ -68,10 +65,6 @@ function setup() {
   serial.list();
   serial.open(portName, options);
   serial.clear();
-
-
-
-    mgr = new SceneManager();
 
     createCanvas(1100, 800);
 
@@ -164,17 +157,6 @@ function button(x,y, buttonText){
   fill(255);
   text(buttonText, x,y+5);
   pop();
-}
-
-class Debug {
-  draw() {
-    background(0);
-    displaySelections();
-
-    if (millis() < lastTitleAt) {
-      displayTitle(message);
-    }
-  }
 }
 
 class Intro {
@@ -367,13 +349,13 @@ function serialEvent() {
   if (inData >= 300) {
     switch(inData) {
       case 300:
-        debounceTitle("RESET PRESSED");
+        Debug.debounceTitle("RESET PRESSED");
         break;
       case 301:
-        debounceTitle("SEARCH PRESSED");
+        Debug.debounceTitle("SEARCH PRESSED");
         break;
       case 302:
-        debounceTitle("RANDOMIZE PRESSED");
+        Debug.debounceTitle("RANDOMIZE PRESSED");
         break;
     }
     return;
@@ -402,39 +384,4 @@ function serialError(err) {
 
 function portClose() {
   print('The serial port closed.');
-}
-
-function displaySelections() {
-  if (!selections || Object.keys(selections).length == 0) return;
-
-  let i = 0;
-  let yHeight = windowHeight / Object.keys(selections).length;
-  for (let key in selections) {
-    let selection = selections[key];
-    push()
-    fill('magenta')
-    textAlign(CENTER, CENTER)
-    textSize(64)
-    text(key + ": " + selection, 300, i * yHeight, windowWidth, windowHeight)
-    pop()
-
-    i++;
-  }
-}
-
-let message;
-let lastTitleAt;
-function debounceTitle(title) {
-  lastTitleAt = millis() + 2000;
-  message = title;
-}
-
-function displayTitle(title) {
-  push()
-  rectMode(CORNER)
-  fill('white')
-  textAlign(CENTER, CENTER)
-  textSize(64)
-  text(title, 0, 0, windowWidth, windowHeight)
-  pop()
 }

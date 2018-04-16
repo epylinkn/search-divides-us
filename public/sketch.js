@@ -70,7 +70,6 @@ function preload(){
   mask = mask2a;
 }
 
-
 function setup() {
   mgr = new SceneManager();
 
@@ -86,7 +85,8 @@ function setup() {
   serial.open(portName, options);
   serial.clear();
 
-    createCanvas(1100, 800);
+    // createCanvas(1100, 800);
+    createCanvas(windowWidth, windowHeight);
 
     rectMode(CENTER);
     textAlign(CENTER);
@@ -134,9 +134,10 @@ function mousePressed()
     mgr.mousePressed();
 }
 
-function keyPressed()
-{
-  console.log(key, " is pressed");
+function keyPressed() {
+  console.log(key, "is pressed");
+  console.log(keyCode, "is pressed");
+
   switch(key) {
     //== Scenes
     case '0':
@@ -219,10 +220,32 @@ function keyPressed()
     case 'B':
       selections.education = 4;
       break;
+
+    case 'I':
+      pressedReset();
+      break;
+    case 'O':
+      pressedSearch();
+      break;
+    case 'P':
+      pressedRandom();
+      break;
   }
 
   // dispatch via the SceneManager.
   mgr.keyPressed();
+}
+
+function pressedReset() {
+  Debug.debounceTitle("RESET PRESSED");
+}
+
+function pressedSearch() {
+  Debug.debounceTitle("SEARCH PRESSED");
+}
+
+function pressedRandom() {
+  Debug.debounceTitle("RANDOM PRESSED");
 }
 
 function button(x,y, buttonText){
@@ -424,13 +447,13 @@ function serialEvent() {
   if (inData >= 300) {
     switch(inData) {
       case 300:
-        Debug.debounceTitle("RESET PRESSED");
+        pressedReset();
         break;
       case 301:
-        Debug.debounceTitle("SEARCH PRESSED");
+        pressedSearch();
         break;
       case 302:
-        Debug.debounceTitle("RANDOMIZE PRESSED");
+        pressedRandom();
         break;
     }
     return;

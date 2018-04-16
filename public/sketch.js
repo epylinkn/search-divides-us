@@ -429,49 +429,46 @@ function portOpen() {
   print('the serial port opened.')
 }
 
-// R1: 0-79
-// R2: 80-159
-// R3: 160-239
-// B1: 300
-// B2: 301
-// B3: 302
 function serialEvent() {
   let inString = serial.readLine();
 
   if (inString.length <= 0) return;
 
-  inData = Number(inString);
+  // expect: <input-type>, <value>
   console.log("inData: ", inData);
+  inData = inString.split(",");
+  if (inData.length != 2) return;
+
+  let input_label = inData[0];
+  let input_value = inData[1];
 
   // IT'S A BUTTON!
-  if (inData >= 300) {
-    switch(inData) {
-      case 300:
+  if (input_label == "button") {
+    switch(input_value) {
+      case "reset":
         pressedReset();
         break;
-      case 301:
+      case "search":
         pressedSearch();
         break;
-      case 302:
+      case "random":
         pressedRandom();
         break;
     }
     return;
   }
 
-  if (inData >= 0 && inData < 80) {
-     // NB. we do 80, which we'll never hit so our range is really 0-4
-    selections.income = floor(map(inData, 0, 80, 0, 5));
+  //=== rotary values
+  if (input_label == "income") {
+    selections.income = incomeLabels.indexOf(input_value);
   }
 
-  if (inData >= 80 && inData < 160) {
-     // NB. we do 160, which we'll never hit so our range is really 0-3
-    selections.race = floor(map(inData, 80, 160, 0, 4));
+  if (input_label == "race") {
+    selections.race = raceLabels.indexOf(input_value);
   }
 
-  if (inData >= 160 && inData < 240) {
-    // NB. we do 240, which we'll never hit so our range is really 0-3
-    selections.education = floor(map(inData, 160, 240, 0, 5));
+  if (input_label == "education") {
+    selections.education = educationLabels.indexOf(input_value);
   }
 }
 

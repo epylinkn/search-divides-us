@@ -12,21 +12,26 @@ class Debug {
   }
 
   displaySelections() {
-    if (!selections || Object.keys(selections).length == 0) return;
-
-    let i = 0;
-    let yHeight = windowHeight / Object.keys(selections).length;
-    for (let key in selections) {
+    let spacing = windowWidth / 3;
+    ["income", "race", "education"].forEach(function(key) {
       let selection = selections[key];
+
       push()
+      rectMode(CORNER)
+      fill('#c0ffee');
+      rect(i * spacing, 0, spacing, windowHeight / 3)
       fill('magenta')
       textAlign(CENTER, CENTER)
       textSize(64)
       text(key + ": " + selection, 300, i * yHeight, windowWidth, windowHeight)
+      textSize(32);
+      text(key, i * spacing, 0, spacing, 100)
+      textSize(48);
+      text(selection, i * spacing, windowHeight / 6, spacing, 100)
       pop()
 
       i++;
-    }
+    });
   }
 
   displayTitle(title) {

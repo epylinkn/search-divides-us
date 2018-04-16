@@ -115,8 +115,7 @@ function setup() {
     mgr.addScene ( Outro );
 
     // mgr.showNextScene();
-    mgr.showScene( Debug );
-
+    mgr.showScene( Intro );
 }
 
 function showNextScene() {
@@ -157,20 +156,6 @@ function keyPressed() {
       break;
     case '5':
       mgr.showScene( Outro );
-      break;
-
-    //== Income
-    case 'Q':
-      selections.income = 0;
-      break;
-    case 'W':
-      selections.income = 1;
-      break;
-    case 'E':
-      selections.income = 2;
-      break;
-    case 'R':
-      selections.income = 3;
       break;
 
     //== Income
@@ -255,19 +240,6 @@ function button(x,y, buttonText){
   fill(255);
   text(buttonText, x,y+5);
   pop();
-}
-
-class Intro {
-  draw() {
-      background(mapImage,1);
-      fill(255);
-      rect(width/2,height/2,500,200);
-      fill(0);
-      text("Welcome to housingsearch.com!", width/2, height/2-30);
-      text("We're here to help you find the perfect home. :)", width/2, height/2);
-      text("TURN THE KNOBS TO START.", width/2, height/2+40);
-      // button(width/2,height/2+50, "START")
-  }
 }
 
 class Profile {
@@ -408,7 +380,6 @@ class Prompt {
     text("What did you think of your results? What if you tried something different?", width/2, height/2);
   }
 }
-
 
 class Outro {
 

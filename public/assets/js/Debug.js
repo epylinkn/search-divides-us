@@ -74,4 +74,63 @@ class Debug {
     text(title, 0, 0, windowWidth, windowHeight)
     pop()
   }
+
+  keyPressed() {
+    switch(key) {
+      //== Income
+      case 'Q':
+        selections.income = 0;
+        break;
+      case 'W':
+        selections.income = 1;
+        break;
+      case 'E':
+        selections.income = 2;
+        break;
+      case 'R':
+        selections.income = 3;
+        break;
+
+      //== Race
+      case 'A':
+        selections.race = 0;
+        break;
+      case 'S':
+        selections.race = 1;
+        break;
+      case 'D':
+        selections.race = 2;
+        break;
+      case 'F':
+        selections.race = 3;
+        break;
+      case 'G':
+        selections.race = 4;
+        break;
+
+      //== Education
+      case 'Z':
+        selections.education = 0;
+        break;
+      case 'X':
+        selections.education = 1;
+        break;
+      case 'C':
+        selections.education = 2;
+        break;
+      case 'V':
+        selections.education = 3;
+        break;
+
+      case 'I':
+        Debug.debounceTitle("RESET PRESSED");
+        break;
+      case 'O':
+        Debug.debounceTitle("SEARCH PRESSED");
+        break;
+      case 'P':
+        Debug.debounceTitle("RANDOM PRESSED");
+        break;
+    }
+  }
 }

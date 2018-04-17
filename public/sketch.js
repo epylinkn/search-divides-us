@@ -1,4 +1,4 @@
-var portName = '/dev/cu.usbmodem14321';
+var portName = '/dev/cu.usbmodem14621';
 var options = { baudrate: 115200 };
 var serial;
 var inData;
@@ -29,26 +29,26 @@ let buttonH = 50;
 let selections = {}
 
 function preload(){
-  roboto = loadFont('assets/RobotoMono.ttf');
+  roboto = loadFont('assets/fonts/RobotoMono.ttf');
 
-  mapImage = loadImage('assets/island_bam.png');
+  mapImage = loadImage('assets/images/island_bam.png');
 
-  blackf = loadImage('assets/bf.jpg');
-  whitef = loadImage('assets/wf.jpg');
-  hispf = loadImage('assets/hf.jpg');
-  asianf = loadImage('assets/af2.jpg');
+  blackf = loadImage('assets/images/bf.jpg');
+  whitef = loadImage('assets/images/wf.jpg');
+  hispf = loadImage('assets/images/hf.jpg');
+  asianf = loadImage('assets/images/af2.jpg');
 
-  blackm = loadImage('assets/bm.jpg');
-  whitem = loadImage('assets/wm.jpg');
-  hispm = loadImage('assets/hm.jpg');
-  asianm = loadImage('assets/am.jpg');
+  blackm = loadImage('assets/images/bm.jpg');
+  whitem = loadImage('assets/images/wm.jpg');
+  hispm = loadImage('assets/images/hm.jpg');
+  asianm = loadImage('assets/images/am.jpg');
 
-  mask1a = loadImage('assets/mask1a.png');
-  mask1b = loadImage('assets/mask1b.png');
-  mask2a = loadImage('assets/mask2a.png');
-  mask2b = loadImage('assets/mask2b.png');
-  mask3a = loadImage('assets/mask3a.png');
-  mask3b = loadImage('assets/mask3b.png');
+  mask1a = loadImage('assets/images/mask1a.png');
+  mask1b = loadImage('assets/images/mask1b.png');
+  mask2a = loadImage('assets/images/mask2a.png');
+  mask2b = loadImage('assets/images/mask2b.png');
+  mask3a = loadImage('assets/images/mask3a.png');
+  mask3b = loadImage('assets/images/mask3b.png');
 
   you = blackf;
   mask = mask2a;
@@ -170,6 +170,10 @@ class Debug {
   draw() {
     background(0);
     displaySelections();
+
+    if (millis() < lastTitleAt) {
+      displayTitle(message);
+    }
   }
 }
 
@@ -184,7 +188,6 @@ class Intro {
       text("TURN THE KNOBS TO START.", width/2, height/2+40);
       // button(width/2,height/2+50, "START")
   }
-
 }
 
 class Profile {
@@ -364,13 +367,13 @@ function serialEvent() {
   if (inData >= 300) {
     switch(inData) {
       case 300:
-        displayTitle("RESET PRESSED");
+        debounceTitle("RESET PRESSED");
         break;
       case 301:
-        displayTitle("SEARCH PRESSED");
+        debounceTitle("SEARCH PRESSED");
         break;
       case 302:
-        displayTitle("RANDOMIZE PRESSED");
+        debounceTitle("RANDOMIZE PRESSED");
         break;
     }
     return;
@@ -419,13 +422,19 @@ function displaySelections() {
   }
 }
 
-function displayTitle(title) {
-  let maxFontSize = windowWidth / title.length
+let message;
+let lastTitleAt;
+function debounceTitle(title) {
+  lastTitleAt = millis() + 2000;
+  message = title;
+}
 
+function displayTitle(title) {
   push()
+  rectMode(CORNER)
   fill('white')
   textAlign(CENTER, CENTER)
-  textSize(64) // HACK
+  textSize(64)
   text(title, 0, 0, windowWidth, windowHeight)
   pop()
 }

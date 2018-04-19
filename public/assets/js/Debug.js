@@ -21,6 +21,12 @@ class Debug {
     let i = 0;
     let spacing = windowWidth / 3;
 
+    let labelLookup = [
+      incomeLabels,
+      raceLabels,
+      educationLabels
+    ];
+
     ["income", "race", "education"].forEach(function(key) {
       let selection = selections[key];
       if (selection === undefined) {
@@ -36,7 +42,9 @@ class Debug {
       textSize(32);
       text(key, i * spacing, 0, spacing, 100)
       textSize(48);
-      text(selection, i * spacing, windowHeight / 6, spacing, 100)
+      text(selection, i * spacing, 50, spacing, 100)
+      textSize(16);
+      text(labelLookup[i][selection], i * spacing, 100, spacing, 100)
       pop()
 
       i++;

@@ -95,8 +95,7 @@ function setup() {
   mgr.addScene(Prompt);
   mgr.addScene(Outro);
 
-  // mgr.showNextScene();
-  mgr.showScene(Intro);
+  mgr.showScene(ModelTrainer);
 }
 
 function showNextScene() {

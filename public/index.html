@@ -22,21 +22,24 @@
   </head>
   <body>
     <div class="model-trainer-form">
-      <button id="train">train</button>
+      <div class="form-group">
+        <button id="train">train</button>
+      </div>
 
-      <!-- <form class="predict-form"> -->
-        <select class="predict-ethnicity form-control form-control-lg">
-          <option>ethnicity</option>
+      <div class="form-group">
+        <select class="predict-race form-control form-control-lg">
+          <option>race</option>
           <option value="0">black</option>
           <option value="1">hispanic</option>
-          <option value="2">native-american</option>
-          <option value="3">other</option>
-          <option value="4">asian</option>
-          <option value="5">white</option>
+          <option value="2">other</option>
+          <option value="3">asian</option>
+          <option value="4">white</option>
         </select>
+      </div>
 
-        <input type="submit" value="predict" />
-      <!-- </form> -->
+      <div class="form-group">
+        <button id="predict">predict</button>
+      </div>
     </div>
 
     <script src="sketch.js"></script>

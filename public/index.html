@@ -3,12 +3,14 @@
   <head>
     <meta charset="utf-8" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.sound.min.js"></script>
+    <script type="text/javascript" src="/scripts/p5/lib/p5.min.js"></script>
+    <script type-"text/javascript" src="/scripts/p5/lib/addons/p5.dom.min.js"></script>
+    <script type-"text/javascript" src="/scripts/p5/lib/addons/p5.sound.min.js"></script>
+    <script type="text/javascript" src="/scripts/@tensorflow/tfjs/dist/tf.min.js"></script>
     <script type="text/javascript" src="assets/js/p5.serialport.js"></script>
     <script type="text/javascript" src="assets/js/p5.scenemanager.js"></script>
     <script type="text/javascript" src="assets/js/Debug.js"></script>
+    <script type="text/javascript" src="assets/js/ModelTrainer.js"></script>
     <script type="text/javascript" src="assets/js/Intro.js"></script>
     <script type="text/javascript" src="assets/js/Profile.js"></script>
     <script type="text/javascript" src="assets/js/Game.js"></script>
@@ -19,6 +21,24 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   </head>
   <body>
+    <div class="model-trainer-form">
+      <button id="train">train</button>
+
+      <!-- <form class="predict-form"> -->
+        <select class="predict-ethnicity form-control form-control-lg">
+          <option>ethnicity</option>
+          <option value="0">black</option>
+          <option value="1">hispanic</option>
+          <option value="2">native-american</option>
+          <option value="3">other</option>
+          <option value="4">asian</option>
+          <option value="5">white</option>
+        </select>
+
+        <input type="submit" value="predict" />
+      <!-- </form> -->
+    </div>
+
     <script src="sketch.js"></script>
   </body>
 </html>

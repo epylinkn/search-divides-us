@@ -1,4 +1,4 @@
-var portName = '/dev/cu.usbmodem14621';
+var portName = '/dev/cu.usbmodem14311';
 var options = { baudrate: 115200 };
 var serial;
 var inData;
@@ -87,29 +87,28 @@ function setup() {
 
   // Preload scenes. Preloading is normally optional
   // ... but needed if showNextScene() is used.
-  mgr.addScene ( Intro );
-  mgr.addScene ( Profile );
-  mgr.addScene ( Game );
-  mgr.addScene ( Prompt );
-  mgr.addScene ( Outro );
+  mgr.addScene(ModelTrainer);
+
+  mgr.addScene(Intro);
+  mgr.addScene(Profile);
+  mgr.addScene(Game);
+  mgr.addScene(Prompt);
+  mgr.addScene(Outro);
 
   // mgr.showNextScene();
-  mgr.showScene( Intro );
+  mgr.showScene(Intro);
 }
 
 function showNextScene() {
-    mgr.showNextScene();
+  mgr.showNextScene();
 }
 
-function draw()
-{
-    mgr.draw();
-    // console.log(buttonPressed);
+function draw() {
+  mgr.draw();
 }
 
-function mousePressed()
-{
-    mgr.mousePressed();
+function mousePressed() {
+  mgr.mousePressed();
 }
 
 function keyPressed() {
@@ -135,6 +134,10 @@ function keyPressed() {
       break;
     case '5':
       mgr.showScene( Outro );
+      break;
+
+    case '9':
+      mgr.showScene( ModelTrainer );
       break;
 
     // case 'I':

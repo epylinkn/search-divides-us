@@ -2,12 +2,18 @@ class Intro {
   draw() {
     background(mapImage,1);
     fill(255);
-    rect(width/2,height/2,500,200);
+    rect(width/2, height/2, 0.7 * width, 250);
+
     fill(0);
-    text("Welcome to housingsearch.com!", width/2, height/2-30);
-    text("We're here to help you find the perfect home. :)", width/2, height/2);
-    text("TURN THE KNOBS TO START.", width/2, height/2+40);
-    // button(width/2,height/2+50, "START")
+    textSize(20);
+    text("Welcome to PHP: Personalized Housing Provider!", width/2, height/2-60);
+
+    textSize(16);
+    text("We're a new kind of search engine.", width/2, height/2 - 20);
+    text("And we want to help you find the perfect home.", width/2, height/2 + 10);
+
+    textSize(28);
+    text("PRESS ENTER TO START", width/2, height/2+80);
   }
 
   keyPressed() {

@@ -1,19 +1,36 @@
+function squish(str) {
+  return str.replace(/ +(?= )/g,'');
+}
+
+function placeholder(str) {
+  return (str === undefined) ? "---" : str;
+}
+
 class Profile {
   draw() {
     background(0);
 
-    button(width/2,height-100, "SEARCH");
-
     fill(255);
-    text("First, tell us a little bit about who you are.", width/2, height/4);
+
+    text(
+      squish(`Like all search engines, we collect data about our users
+      to give you the best possible search experience.`),
+      width/2,
+      height/4 - 30
+    );
+
     image(you, width/2-100,height/4+30,200,200);
 
-    let yHeight = height / 2;
+    text("Please tell us a little bit about yourself to receive your personalized result. ", width/2, height/2 + 10);
+
+    let yHeight = height / 2 + 60;
     textSize(14);
-    text("income is " + incomeLabels[selections.income], width/2, yHeight);
-    text("race is " + raceLabels[selections.race], width/2, yHeight + 24);
-    text("education is " + educationLabels[selections.education], width/2, yHeight + 48);
+    text("income is " + placeholder(incomeLabels[selections.income]), width/2, yHeight);
+    text("race is " + placeholder(raceLabels[selections.race]), width/2, yHeight + 24);
+    text("education is " + placeholder(educationLabels[selections.education]), width/2, yHeight + 48);
     text("you are this person!", width/2, yHeight + 72);
+
+    text("TURN KNOBS AND THEN PRESS ENTER TO FIND A HOME", width/2, height-100);
 
     // TODO: replace this with sprite layers??
     // if (race >= 0 && race< 250) {

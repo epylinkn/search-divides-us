@@ -1,59 +1,29 @@
 class Game {
-  setup() {
-    // TODO: replace this
-    // if (you==hispf || you==hispm){
-    //   if (inc > 800){
-    //     mask = mask1b;
-    //   }
-    //   if (inc <= 800 && inc > 400){
-    //     mask = mask2a;
-    //   }
-    //   if (inc <= 400){
-    //     mask = mask3a;
-    //   }
-    // }
-    //
-    // if (you==blackf || you==blackm){
-    //   if (inc > 800){
-    //     mask = mask1b;
-    //   }
-    //   if (inc <= 800 && inc > 400){
-    //     mask = mask2b;
-    //   }
-    //   if (inc <= 400){
-    //     mask = mask3b;
-    //   }
-    // }
-    //
-    // if (you==asianf || you==asianm){
-    //   if (inc > 800){
-    //     mask = mask1a;
-    //   }
-    //   if (inc <= 800 && inc > 400){
-    //     mask = mask2a;
-    //   }
-    //   if (inc <= 400){
-    //     mask = mask3a;
-    //   }
-    // }
-    //
-    // if (you==whitef || you==whitem){
-    //   if (inc > 800){
-    //     mask = mask1a;
-    //   }
-    //   if (inc <= 800 && inc > 400){
-    //     mask = mask1b;
-    //   }
-    //   if (inc <= 400){
-    //     mask = mask2a;
-    //   }
-    // }
+  async enter() {
+    let prediction = await mlModel.predict([
+      selections.race,
+      selections.education,
+      selections.income
+    ])
+
+    console.log(prediction)
+    let predY = prediction[1];
+
+    // NB. Hacky classifier, let's just deal with predY
+    this.neighborhood = map(predY, 0, height+1, 7, 1)
+    this.mask = masks[floor(this.neighborhood - 1)]
+    console.log(this.mask)
   }
 
   draw() {
     background(mapImage, 1);
 
-    image(mask, 0, 0, width, height);
+    if (!this.neighborhood) {
+      text(random(10), 0, 0, width, height)
+      return;
+    }
+
+    image(this.mask, 0, 0, width, height);
     image(you, width-100, 0, 100, 100);
   }
 }

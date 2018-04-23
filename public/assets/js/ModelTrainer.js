@@ -22,6 +22,10 @@ class ModelTrainer {
     }
   }
 
+  leave() {
+    this.$form.hide();
+  }
+
   setup() {
     this.trained = false;
     this.dataIndex = 0;
@@ -47,6 +51,7 @@ class ModelTrainer {
 
   drawPredictor() {
     push()
+
     rectMode(CORNER)
 
     fill("yellow")
@@ -65,6 +70,8 @@ class ModelTrainer {
       textAlign(CENTER, CENTER);
       text(i + 1, x - 15, y - 15, 30, 30);
     }
+
+    pop()
   }
 
   drawLabeler() {

@@ -6,7 +6,7 @@ var inData;
 let mgr;
 let you;
 
-let mask;
+let masks;
 
 let buttonPressed;
 
@@ -50,15 +50,16 @@ function preload(){
   hispm = loadImage('assets/images/hm.jpg');
   asianm = loadImage('assets/images/am.jpg');
 
-  mask1a = loadImage('assets/images/mask1a.png');
-  mask1b = loadImage('assets/images/mask1b.png');
-  mask2a = loadImage('assets/images/mask2a.png');
-  mask2b = loadImage('assets/images/mask2b.png');
-  mask3a = loadImage('assets/images/mask3a.png');
-  mask3b = loadImage('assets/images/mask3b.png');
-
   you = blackf;
-  mask = mask2a;
+
+  masks = [
+    loadImage('assets/images/mask1.png'),
+    loadImage('assets/images/mask2.png'),
+    loadImage('assets/images/mask3.png'),
+    loadImage('assets/images/mask4.png'),
+    loadImage('assets/images/mask5.png'),
+    loadImage('assets/images/mask6.png'),
+  ]
 }
 
 function setup() {

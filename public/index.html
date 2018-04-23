@@ -9,6 +9,7 @@
     <script type="text/javascript" src="/scripts/@tensorflow/tfjs/dist/tf.min.js"></script>
     <script type="text/javascript" src="assets/js/p5.serialport.js"></script>
     <script type="text/javascript" src="assets/js/p5.scenemanager.js"></script>
+    <script type="text/javascript" src="assets/js/MLModel.js"></script>
     <script type="text/javascript" src="assets/js/Debug.js"></script>
     <script type="text/javascript" src="assets/js/ModelTrainer.js"></script>
     <script type="text/javascript" src="assets/js/Intro.js"></script>
@@ -34,6 +35,27 @@
           <option value="2">other</option>
           <option value="3">asian</option>
           <option value="4">white</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <select class="predict-income form-control form-control-lg">
+          <option>income</option>
+          <option value="0">lower</option>
+          <option value="1">middle</option>
+          <option value="2">upper-middle</option>
+          <option value="3">upper</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <select class="predict-education form-control form-control-lg">
+          <option>education</option>
+          <option value="0">less-than-high-school</option>
+          <option value="1">high-school</option>
+          <option value="2">some-college</option>
+          <option value="3">bachelors</option>
+          <option value="4">advanced</option>
         </select>
       </div>
 

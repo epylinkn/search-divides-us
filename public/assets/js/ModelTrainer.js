@@ -1,4 +1,4 @@
-let mlModel;
+let mlModel = new MLModel();
 let mlPredictions = [];
 
 let unlabeledData = [
@@ -27,37 +27,6 @@ class ModelTrainer {
     this.dataIndex = 0;
     this.mapWidth = windowWidth * .60;
     this.mapHeight = windowHeight;
-
-    mlModel = tf.sequential();
-    mlModel.add(tf.layers.dense({units: 2, inputShape: [2]}));
-
-    // Prepare the model for training: Specify the loss and the optimizer.
-    mlModel.compile({loss: 'meanSquaredError', optimizer: 'sgd'});
-
-    // Generate some synthetic data for training.
-    this.train = async function(xx, yy) {
-      const _xs = tf.tensor2d(xx);
-      const _ys = tf.tensor2d(yy);
-
-      console.log("training started...");
-      await mlModel.fit(_xs, _ys);
-      console.log("training finished...");
-
-      return;
-    }
-
-    this.predict = async function(xx) {
-      const _xs = tf.tensor2d(xx, [1, 2]);
-
-      console.log("prediction started...");
-      let prediction = await mlModel.predict(_xs);
-      prediction = prediction.dataSync();
-      console.log("prediction finished...");
-
-      mlPredictions.push(prediction)
-
-      return prediction;
-    }
 
     this.trainButton = select('#train')
     this.trainButton.mousePressed(this.handleTrain.bind(this))
@@ -148,6 +117,7 @@ class ModelTrainer {
     xs.push([
       raceLabels.indexOf(unlabeledData[this.dataIndex][0]),
       educationLabels.indexOf(unlabeledData[this.dataIndex][1]),
+      incomeLabels.indexOf(unlabeledData[this.dataIndex][2]),
     ])
 
     this.dataIndex += 1;
@@ -159,17 +129,22 @@ class ModelTrainer {
   }
 
   async handleTrain() {
-    await this.train(xs, ys);
+    await mlModel.train(xs, ys);
   }
 
-  handlePrediction() {
+  async handlePrediction() {
     let race = select('.predict-race').value()
+    let education = select('.predict-education').value()
+    let income = select('.predict-income').value()
 
     let xx = [
       parseInt(race),
-      1
+      parseInt(education),
+      parseInt(income),
     ];
 
-    this.predict(xx);
+    let prediction = await mlModel.predict(xx);
+
+    mlPredictions.push(prediction)
   }
 }

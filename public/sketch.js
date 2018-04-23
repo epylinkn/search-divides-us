@@ -32,7 +32,7 @@ let educationLabels = [
   "high-school",
   "some-college",
   "bachelors",
-  "advanced"
+  "advanced",
 ];
 
 function preload(){

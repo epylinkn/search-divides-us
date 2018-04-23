@@ -137,7 +137,11 @@ function keyPressed() {
       break;
 
     case '9':
-      mgr.showScene( ModelTrainer );
+      mgr.showscene( ModelTrainer );
+      break;
+
+    case ' ':
+      mgr.showNextScene();
       break;
 
     // case 'I':

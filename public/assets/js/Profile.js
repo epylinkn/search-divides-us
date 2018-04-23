@@ -19,7 +19,7 @@ class Profile {
       height/4 - 30
     );
 
-    // TODO: animate profile?
+    // TODO: animate profile as selections change
     // image(you, width/2-100,height/4+30,200,200);
 
     text("Please tell us a little bit about yourself to receive your personalized result. ", width/2, height/2 + 10);

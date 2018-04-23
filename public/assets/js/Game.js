@@ -19,7 +19,7 @@ class Game {
     background(mapImage, 1);
 
     if (!this.neighborhood) {
-      text(random(10), 0, 0, width, height)
+      // TODO: loading bar
       return;
     }
 

@@ -19,7 +19,8 @@ class Profile {
       height/4 - 30
     );
 
-    image(you, width/2-100,height/4+30,200,200);
+    // TODO: animate profile as selections change
+    // image(you, width/2-100,height/4+30,200,200);
 
     text("Please tell us a little bit about yourself to receive your personalized result. ", width/2, height/2 + 10);
 
@@ -31,47 +32,6 @@ class Profile {
     text("you are this person!", width/2, yHeight + 72);
 
     text("TURN KNOBS AND THEN PRESS ENTER TO FIND A HOME", width/2, height-100);
-
-    // TODO: replace this with sprite layers??
-    // if (race >= 0 && race< 250) {
-    //   if (edu >= inc){
-    //     you = blackf;
-    //   }
-    //
-    //   else if (edu < inc){
-    //     you = blackm;
-    //   }
-    // }
-    //
-    // if (race >= 250 && race< 500) {
-    //   if (edu >= inc){
-    //     you = whitef;
-    //   }
-    //
-    //   if (edu < inc){
-    //     you = whitem;
-    //   }
-    // }
-    //
-    // if (race >= 500 && race<750) {
-    //   if (edu >= inc){
-    //     you = asianf;
-    //   }
-    //
-    //   if (edu < inc){
-    //     you = asianm;
-    //   }
-    // }
-    //
-    // if (race >= 750 && race<1000) {
-    //   if (edu >= inc){
-    //     you = hispf;
-    //   }
-    //
-    //   if (edu < inc){
-    //     you = hispm;
-    //   }
-    // }
   }
 
   canSeeNextScene() {

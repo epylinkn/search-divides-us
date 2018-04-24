@@ -1,4 +1,4 @@
-var portName = '/dev/cu.usbmodem14621';
+var portName = '/dev/cu.usbmodem14311';
 var options = { baudrate: 115200 };
 var serial;
 var inData;
@@ -6,7 +6,7 @@ var inData;
 let mgr;
 let you;
 
-let mask;
+let masks;
 
 let buttonPressed;
 
@@ -32,7 +32,7 @@ let educationLabels = [
   "high-school",
   "some-college",
   "bachelors",
-  "advanced"
+  "advanced",
 ];
 
 function preload(){
@@ -50,15 +50,16 @@ function preload(){
   hispm = loadImage('assets/images/hm.jpg');
   asianm = loadImage('assets/images/am.jpg');
 
-  mask1a = loadImage('assets/images/mask1a.png');
-  mask1b = loadImage('assets/images/mask1b.png');
-  mask2a = loadImage('assets/images/mask2a.png');
-  mask2b = loadImage('assets/images/mask2b.png');
-  mask3a = loadImage('assets/images/mask3a.png');
-  mask3b = loadImage('assets/images/mask3b.png');
-
   you = blackf;
-  mask = mask2a;
+
+  masks = [
+    loadImage('assets/images/mask1.png'),
+    loadImage('assets/images/mask2.png'),
+    loadImage('assets/images/mask3.png'),
+    loadImage('assets/images/mask4.png'),
+    loadImage('assets/images/mask5.png'),
+    loadImage('assets/images/mask6.png'),
+  ]
 }
 
 function setup() {
@@ -87,29 +88,27 @@ function setup() {
 
   // Preload scenes. Preloading is normally optional
   // ... but needed if showNextScene() is used.
-  mgr.addScene ( Intro );
-  mgr.addScene ( Profile );
-  mgr.addScene ( Game );
-  mgr.addScene ( Prompt );
-  mgr.addScene ( Outro );
+  mgr.addScene(ModelTrainer);
 
-  // mgr.showNextScene();
-  mgr.showScene( Intro );
+  mgr.addScene(Intro);
+  mgr.addScene(Profile);
+  mgr.addScene(Game);
+  mgr.addScene(Prompt);
+  mgr.addScene(Outro);
+
+  mgr.showScene(ModelTrainer);
 }
 
 function showNextScene() {
-    mgr.showNextScene();
+  mgr.showNextScene();
 }
 
-function draw()
-{
-    mgr.draw();
-    // console.log(buttonPressed);
+function draw() {
+  mgr.draw();
 }
 
-function mousePressed()
-{
-    mgr.mousePressed();
+function mousePressed() {
+  mgr.mousePressed();
 }
 
 function keyPressed() {
@@ -135,6 +134,14 @@ function keyPressed() {
       break;
     case '5':
       mgr.showScene( Outro );
+      break;
+
+    case '9':
+      mgr.showscene( ModelTrainer );
+      break;
+
+    case ' ':
+      mgr.showNextScene();
       break;
 
     // case 'I':

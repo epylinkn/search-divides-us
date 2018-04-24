@@ -7,6 +7,7 @@ let server = require('http').createServer(app).listen(port, function() {
 });
 
 app.use(express.static('public'));
+app.use('/scripts', express.static(__dirname + '/node_modules/'))
 
 //== Serial setup
 let serialserver = require('p5.serialserver');

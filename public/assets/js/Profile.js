@@ -1,12 +1,12 @@
-function squish(str) {
-  return str.replace(/ +(?= )/g,'');
-}
-
-function placeholder(str) {
-  return (str === undefined) ? "---" : str;
-}
-
 class Profile {
+  enter() {
+    select(".foo").show();
+  }
+
+  leave() {
+    select(".foo").hide();
+  }
+
   draw() {
     background(0);
 
@@ -29,9 +29,27 @@ class Profile {
     text("income is " + placeholder(incomeLabels[selections.income]), width/2, yHeight);
     text("race is " + placeholder(raceLabels[selections.race]), width/2, yHeight + 24);
     text("education is " + placeholder(educationLabels[selections.education]), width/2, yHeight + 48);
-    text("you are this person!", width/2, yHeight + 72);
 
-    text("TURN KNOBS AND THEN PRESS ENTER TO FIND A HOME", width/2, height-100);
+    this.displayStringWithBackground("Native American", '#c0ffee');
+    // text("you are this person!", width/2, yHeight + 72);
+    //
+    // text("TURN KNOBS AND THEN PRESS ENTER TO FIND A HOME", width/2, height-100);
+  }
+
+  displayStringWithBackground(str, backgroundColor) {
+    push()
+
+    textSize(20)
+    let strWidth = textWidth(str);
+
+    fill(backgroundColor);
+    rectMode(CENTER)
+    rect(width/2, height/2, strWidth + 20, 30, 10)
+
+    fill('black');
+    textAlign(CENTER, CENTER)
+    text(str, width/2, height/2);
+    pop()
   }
 
   canSeeNextScene() {

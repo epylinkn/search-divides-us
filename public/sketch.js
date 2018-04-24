@@ -238,3 +238,11 @@ function serialError(err) {
 function portClose() {
   print('The serial port closed.');
 }
+
+function squish(str) {
+  return str.replace(/ +(?= )/g,'');
+}
+
+function placeholder(str) {
+  return (str === undefined) ? "---" : str;
+}

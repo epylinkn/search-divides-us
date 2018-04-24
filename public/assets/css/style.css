@@ -14,3 +14,14 @@ html, body {
   top: 40%;
   display: none;
 }
+
+.foo {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  color: white;
+  font-size: 100px;
+}

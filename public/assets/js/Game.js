@@ -22,8 +22,10 @@ class Game {
       // TODO: loading bar
       return;
     }
-
-    image(this.mask, 0, 0, width, height);
+push();
+imageMode(CENTER)
+    image(this.mask, width/2, height/2, width,height);
+pop();
     image(you, width-100, 0, 100, 100);
   }
 }

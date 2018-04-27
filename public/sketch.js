@@ -1,123 +1,4 @@
-var portName = '/dev/cu.usbmodem14311';
-var options = { baudrate: 115200 };
-var serial;
-var inData;
-
-let mgr;
-let you;
-
-let masks;
-
-let buttonPressed;
-
-let buttonW = 200;
-let buttonH = 50;
-
-let selections = {};
-let incomeLabels = [
-  "lower",
-  "middle",
-  "upper-middle",
-  "upper",
-];
-let raceLabels = [
-  "black",
-  "hispanic",
-  "other",
-  "asian",
-  "white",
-];
-let educationLabels = [
-  "less-than-high-school",
-  "high-school",
-  "some-college",
-  "bachelors",
-  "advanced",
-];
-
-function preload(){
-  roboto = loadFont('assets/fonts/RobotoMono.ttf');
-
-  mapImage = loadImage('assets/images/island_bam.png');
-
-  blackf = loadImage('assets/images/bf.jpg');
-  whitef = loadImage('assets/images/wf.jpg');
-  hispf = loadImage('assets/images/hf.jpg');
-  asianf = loadImage('assets/images/af2.jpg');
-
-  blackm = loadImage('assets/images/bm.jpg');
-  whitem = loadImage('assets/images/wm.jpg');
-  hispm = loadImage('assets/images/hm.jpg');
-  asianm = loadImage('assets/images/am.jpg');
-
-  you = blackf;
-
-  masks = [
-    loadImage('assets/images/mask1.png'),
-    loadImage('assets/images/mask2.png'),
-    loadImage('assets/images/mask3.png'),
-    loadImage('assets/images/mask4.png'),
-    loadImage('assets/images/mask5.png'),
-    loadImage('assets/images/mask6.png'),
-  ]
-}
-
-function setup() {
-  mgr = new SceneManager();
-
-  serial = new p5.SerialPort();
-  // serial.on('list', console.log);
-  serial.on('connected', serverConnected);
-  serial.on('open', portOpen);
-  serial.on('data', serialEvent);
-  serial.on('error', serialError);
-  serial.on('close', portClose);
-
-  serial.list();
-  serial.open(portName, options);
-  serial.clear();
-
-  // createCanvas(1100, 800);
-  createCanvas(windowWidth, windowHeight);
-
-  rectMode(CENTER);
-  textAlign(CENTER);
-
-  textFont(roboto);
-  textSize(16);
-
-  // Preload scenes. Preloading is normally optional
-  // ... but needed if showNextScene() is used.
-  mgr.addScene(ModelTrainer);
-
-  mgr.addScene(Intro);
-  mgr.addScene(Profile);
-  mgr.addScene(Game);
-  mgr.addScene(Prompt);
-  mgr.addScene(Outro);
-
-  mgr.showScene(ModelTrainer);
-}
-
-function showNextScene() {
-  mgr.showNextScene();
-}
-
-function draw() {
-  mgr.draw();
-}
-
-function mousePressed() {
-  mgr.mousePressed();
-}
-
-function keyPressed() {
-  console.log(key, "is pressed");
-  console.log(keyCode, "is pressed");
-
-  switch(key) {
-    //== Scenes
-    case '0':
+var portName = '/dev/cu.usbmodem1421';
       mgr.showScene( Debug );
       break;
     case '1':
@@ -246,3 +127,24 @@ function squish(str) {
 function placeholder(str) {
   return (str === undefined) ? "---" : str;
 }
+
+//KATHY TRYING TO MAKE THINGS WORK WITH THE IMAGE ....
+// function getRace(){
+//     if(selections.race == undefined){
+//       you = blackf;
+//     }
+//     if (selections.race == "black"){
+//       you = blackf;
+//     }
+//     if (selections.race == "hispanic"){
+//       you = hispf;
+//     }
+//     if (selections.race == "asian"){
+//       you = asianf;
+//     }
+//     if (selections.race == "white"){
+//       you = whitef;
+//     }
+//
+//     console.log(selections.race);
+//   }

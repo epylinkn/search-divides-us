@@ -9,48 +9,30 @@ class Profile {
 
   draw() {
     background(0);
-
     fill(255);
 
     text(
       squish(`Like all search engines, we collect data about our users
-      to give you the best possible search experience.`),
+      to give you the best possible search experience.
+      Please tell us a little bit about yourself to receive your personalized result.`),
       width/2,
       height/4 - 30
     );
 
     // TODO: animate profile as selections change
-    // image(you, width/2-100,height/4+30,200,200);
+    image(you, width/2-100,height/3,200,200);
 
-    text("Please tell us a little bit about yourself to receive your personalized result. ", width/2, height/2 + 10);
 
     let yHeight = height / 2 + 60;
-    textSize(14);
-    text("income is " + placeholder(incomeLabels[selections.income]), width/2, yHeight);
-    text("race is " + placeholder(raceLabels[selections.race]), width/2, yHeight + 24);
-    text("education is " + placeholder(educationLabels[selections.education]), width/2, yHeight + 48);
+    textSize(20);
+    text("TURN KNOBS AND THEN PRESS ENTER TO FIND A HOME", width/2, height-100);
 
-    this.displayStringWithBackground("Native American", '#c0ffee');
-    // text("you are this person!", width/2, yHeight + 72);
-    //
-    // text("TURN KNOBS AND THEN PRESS ENTER TO FIND A HOME", width/2, height-100);
-  }
+    select("#race-label").html(placeholder(raceLabels[selections.race]));
+    select("#inc-label").html(placeholder(incomeLabels[selections.income]));
+    select("#edu-label").html(placeholder(educationLabels[selections.education]));
+}
 
-  displayStringWithBackground(str, backgroundColor) {
-    push()
 
-    textSize(20)
-    let strWidth = textWidth(str);
-
-    fill(backgroundColor);
-    rectMode(CENTER)
-    rect(width/2, height/2, strWidth + 20, 30, 10)
-
-    fill('black');
-    textAlign(CENTER, CENTER)
-    text(str, width/2, height/2);
-    pop()
-  }
 
   canSeeNextScene() {
     if (selections.income == undefined ||
@@ -81,18 +63,25 @@ class Profile {
       //== Race
       case 'A':
         selections.race = 0;
+        you = blackf;
         break;
       case 'S':
         selections.race = 1;
+        you = hispf;
         break;
       case 'D':
         selections.race = 2;
+        you = hispf;
         break;
       case 'F':
         selections.race = 3;
+        you = asianf;
+
         break;
       case 'G':
         selections.race = 4;
+        you = whitef;
+
         break;
 
       //== Education

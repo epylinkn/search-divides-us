@@ -1,3 +1,10 @@
+
+@font-face {
+font-family: "Roboto";
+src: url("../fonts/RobotoMono.ttf");
+}
+
+
 html, body {
   margin: 0;
   padding: 0;
@@ -18,10 +25,38 @@ html, body {
 .foo {
   display: none;
   position: absolute;
-  top: 0;
+  top: 60%;
   left: 0;
-  bottom: 0;
   right: 0;
-  color: white;
-  font-size: 100px;
+
+  line-height: 270%;
+  text-align: center;
+  font-size: 24px;
+  font-family: "Roboto",monospace;
+  color:white;
+}
+
+#race-label {
+  background: #69d6aa;
+  color:black;
+  padding:10px;
+  border-radius: 5px;
+
+}
+
+#inc-label {
+  background: #ffd05a;
+  padding:10px;
+  border-radius: 5px;
+  color:black;
+
+
+}
+
+#edu-label {
+  background: #e89952;
+  padding:10px;
+  border-radius: 5px;
+  color:black;
+
 }

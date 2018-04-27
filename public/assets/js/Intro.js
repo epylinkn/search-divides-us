@@ -1,5 +1,6 @@
 class Intro {
   draw() {
+    rectMode(CENTER)
     background(mapImage,1);
     fill(255);
     rect(width/2, height/2, 0.7 * width, 250);

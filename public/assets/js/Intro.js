@@ -4,7 +4,7 @@ class Intro {
     background(browser,1);
     image(mapImage,0,0,width, height);
     fill(255);
-    rect(width/2, height/2, 0.7 * width, 250);
+    // rect(width/2, height/2, 0.7 * width, 250);
 
     fill(0);
     textSize(20);
@@ -13,9 +13,9 @@ class Intro {
     // textSize(16);
     // text("We're a new kind of search engine.", width/2, height/2 - 20);
     // text("And we want to help you find the perfect home.", width/2, height/2 + 10);
-
-    textSize(28);
-    text("PRESS ENTER TO START", width/2, height/2+80);
+    image(welcome, 0,0, width,height)
+    // textSize(28);
+    // text("PRESS ENTER TO START", width/2, height/2+80);
   }
 
   keyPressed() {

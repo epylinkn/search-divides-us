@@ -41,6 +41,8 @@ function preload(){
 
   mapImage = loadImage('assets/images/map.png');
   browser = loadImage('assets/images/browser.png')
+  welcome = loadImage('assets/images/welcome.png');
+  button_search = loadImage('assets/images/button_search.png')
   blackf = loadImage('assets/images/black-f.png');
   whitef = loadImage('assets/images/white-f.png');
   hispf = loadImage('assets/images/hispanic-f.png');

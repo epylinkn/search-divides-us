@@ -13,7 +13,7 @@ class Profile {
 
     text(
       squish(`Tell us some data about yourself so that we can
-      give you the best possible search experience.`),
+      give you the best possible search experience. Turn the knobs to select:`),
       width/2,
       height/4 - 30
     );
@@ -22,10 +22,12 @@ class Profile {
     image(you, width/2-100,height/3,200,200);
 
 
-    let yHeight = height / 2 + 60;
-    textSize(20);
-    text("TURN KNOBS AND THEN PRESS ENTER TO FIND A HOME", width/2, height-100);
 
+    push();
+    imageMode(CENTER)
+    tint(255, 255);  // Display at FULL opacity
+    image(button_search, width/2,height-100,328,75)
+    pop();
     select("#race-label").html(placeholder(raceLabels[selections.race]));
     select("#inc-label").html(placeholder(incomeLabels[selections.income]));
     select("#edu-label").html(placeholder(educationLabels[selections.education]));

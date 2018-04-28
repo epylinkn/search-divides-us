@@ -7,6 +7,8 @@ let mgr;
 let you;
 
 let masks;
+let mask;
+let neighborhood;
 
 let buttonPressed;
 
@@ -60,6 +62,8 @@ let educationLabels = [
 
 function preload(){
   roboto = loadFont('assets/fonts/RobotoMono.ttf');
+
+  searchIcon = loadImage('assets/images/search-icon.png');
 
   mapImage = loadImage('assets/images/map.png');
   browser = loadImage('assets/images/browser.png')
@@ -123,6 +127,7 @@ function setup() {
   mgr.addScene(ModelTrainer);
   mgr.addScene(Intro);
   mgr.addScene(Profile);
+  mgr.addScene(Searching);
   mgr.addScene(Game);
   mgr.addScene(Prompt);
   mgr.addScene(Outro);

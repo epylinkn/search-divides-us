@@ -1,9 +1,14 @@
 class Outro {
   draw() {
     background(0);
-    button(width/2,height-100,"START OVER");
 
-    fill(255);
+    // TODO: replace this...
+    fill("pink")
+    ellipse(width - 100, 50, 50, 50);
+
+    fill('white')
+    textSize(16)
+    text("START OVER", width - 100, 100, 125, 50);
 
     textSize(25);
     text("WHAT JUST HAPPENED?",width/2,200);

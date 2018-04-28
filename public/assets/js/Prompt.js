@@ -36,16 +36,7 @@ class Prompt {
   keyPressed() {
     switch(key) {
       case 'P':
-        randomSound.play();
-
-        selections = {
-          income: floor(random(incomeValues.length)),
-          race: floor(random(raceValues.length)),
-          education: floor(random(educationValues.length)),
-        }
-
-        changeYou();
-        this.sceneManager.showScene( Game );
+        this.sceneManager.showScene( RandomProfile );
         break;
     }
   }

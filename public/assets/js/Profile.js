@@ -76,25 +76,18 @@ class Profile {
       //== Race
       case 'A':
         selections.race = 0;
-        you = blackf;
         break;
       case 'S':
         selections.race = 1;
-        you = hispf;
         break;
       case 'D':
         selections.race = 2;
-        you = hispf;
         break;
       case 'F':
         selections.race = 3;
-        you = asianf;
-
         break;
       case 'G':
         selections.race = 4;
-        you = whitef;
-
         break;
 
       //== Education

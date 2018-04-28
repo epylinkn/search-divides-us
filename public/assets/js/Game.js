@@ -10,4 +10,14 @@ class Game {
 
     image(you, 1350, 80, 100,100);
   }
+
+  keyPressed() {
+    switch(key) {
+      case 'O':
+        buttonSound.play();
+        this.sceneManager.showNextScene();
+        break;
+    }
+  }
+
 }

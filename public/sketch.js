@@ -5,6 +5,7 @@ var inData;
 
 let mgr;
 let you;
+let youLookup;
 
 let masks;
 let mask;
@@ -78,6 +79,14 @@ function preload(){
   whitem = loadImage('assets/images/white-m.png');
   hispm = loadImage('assets/images/hispanic-m.png');
   asianm = loadImage('assets/images/asian-m.png');
+
+  youLookup = {
+    "black": blackf,
+    "hispanic": hispf,
+    // "other": ???
+    "asian": asianf,
+    "white": whitef,
+  }
 
   you = blackf;
 

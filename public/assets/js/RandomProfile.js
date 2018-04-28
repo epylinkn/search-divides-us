@@ -19,10 +19,10 @@ class RandomProfile {
     fill(255);
 
     if (you) {
-      let size = this.stopRandomizing ? this.pulsingSize() : 200;
+      let size = this.stopRandomizing ? this.pulsingSize() : 250;
       push()
       imageMode(CENTER)
-      image(you, width/2,height/2,size,size);
+      image(you, width/2,height/2 - 85,size,size);
       pop()
     }
 
@@ -32,14 +32,14 @@ class RandomProfile {
   }
 
   pulsingSize() {
-    return 200 + 20 * sin(millis() / 100)
+    return 250 + 20 * sin(millis() / 100)
   }
 
   soundEndHandler() {
     this.stopRandomizing = true;
 
     setTimeout(function() {
-      mgr.showScene( Game )
+      mgr.showScene( Searching )
     }, 2000);
   }
 
@@ -68,6 +68,8 @@ class RandomProfile {
     selections.race = newRaceSelection;
     selections.education = newEducationSelection;
 
-    you = youLookup[raceValues[selections.race]] || you;
+    changeYou();
+
+    // you = youLookup[raceValues[selections.race]] || you;
   }
 }

@@ -33,7 +33,7 @@ class Profile {
 
     // TODO: animate profile as selections change
     imageMode(CENTER)
-    image(you, width/2,height/2-85,300,300);
+    image(you, width/2,height/2-85,250,250);
 
     tint(255, 255);  // Display at FULL opacity
     image(button_search, width/2,height-100,328,75)

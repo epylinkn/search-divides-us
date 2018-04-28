@@ -11,7 +11,7 @@ class Prompt {
       fill(255);
       text('YOU',width-240, 320);
     pop();
-    // yHeight = height / 2 - 300;
+    // yHeight = height / 2 - 200;
     // textSize(24);
     // text(
     //   'Based on your demographic data...',

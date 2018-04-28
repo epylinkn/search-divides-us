@@ -1,6 +1,6 @@
 class Searching {
   async enter() {
-    this.loadingEndAt = millis() + 3000;
+    this.loadingEndAt = millis() + 2000;
 
     let prediction = await mlModel.predict([
       selections.race,

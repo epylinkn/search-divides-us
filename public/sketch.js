@@ -5,8 +5,11 @@ var inData;
 
 let mgr;
 let you;
+let youLookup;
 
 let masks;
+let mask;
+let neighborhood;
 
 let buttonPressed;
 
@@ -58,8 +61,20 @@ let educationLabels = [
   "Advanced Degree",
 ];
 
+let sceneLookup = {
+  Intro: Intro,
+  Profile: Profile,
+  Searching: Searching,
+  Game: Game,
+  Prompt: Prompt,
+  RandomProfile: RandomProfile,
+  Outro: Outro
+}
+
 function preload(){
   roboto = loadFont('assets/fonts/RobotoMono.ttf');
+
+  searchIcon = loadImage('assets/images/search-icon.png');
 
   mapImage = loadImage('assets/images/map.png');
   browser = loadImage('assets/images/browser.png')
@@ -78,6 +93,14 @@ function preload(){
   asianm = loadImage('assets/images/asian-m.png');
 
   you = blackf;
+
+  youLookup = {
+    "black": blackf,
+    "hispanic": hispf,
+    // "other": ???
+    "asian": asianf,
+    "white": whitef,
+  }
 
   masks = [
     loadImage('assets/images/mask1.png'),
@@ -122,14 +145,19 @@ function setup() {
 
   // Preload scenes. Preloading is normally optional
   // ... but needed if showNextScene() is used.
-  mgr.addScene(ModelTrainer);
   mgr.addScene(Intro);
   mgr.addScene(Profile);
+  mgr.addScene(Searching);
   mgr.addScene(Game);
   mgr.addScene(Prompt);
+  mgr.addScene(RandomProfile);
   mgr.addScene(Outro);
 
-  mgr.showScene(ModelTrainer);
+  mgr.showScene(Intro);
+
+  let xs = [[2,1,1],[0,3,3],[1,0,2],[4,2,1]]
+  let ys = [[393,414],[382,44],[387,184],[409,706]]
+  mlModel.train(xs, ys);
 }
 
 function showNextScene() {
@@ -151,41 +179,25 @@ function keyPressed() {
   switch(key) {
     //== Scenes
     case '0':
-      mgr.showScene( Debug );
-      break;
     case '1':
-      mgr.showScene( Intro );
-      break;
     case '2':
-      mgr.showScene( Profile );
-      break;
     case '3':
-      mgr.showScene( Game );
-      break;
     case '4':
-      mgr.showScene( Prompt );
-      break;
     case '5':
-      mgr.showScene( Outro );
+    case '6':
+    case '7':
+    case '8':
+      let nextScene = Object.values(sceneLookup)[key];
+      mgr.showScene( nextScene )
       break;
 
     case '9':
-      mgr.showscene( ModelTrainer );
+      mgr.showScene( ModelTrainer );
       break;
 
     case ' ':
       mgr.showNextScene();
       break;
-
-    // case 'I':
-    //   pressedReset();
-    //   break;
-    // case 'O':
-    //   pressedSearch();
-    //   break;
-    // case 'P':
-    //   pressedRandom();
-    //   break;
   }
 
   // dispatch via the SceneManager.

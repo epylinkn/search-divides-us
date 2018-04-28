@@ -8,13 +8,12 @@ class Profile {
   }
 
   draw() {
-    background(0);
+    background(browser,1);
     fill(255);
 
     text(
-      squish(`Like all search engines, we collect data about our users
-      to give you the best possible search experience.
-      Please tell us a little bit about yourself to receive your personalized result.`),
+      squish(`Tell us some data about yourself so that we can
+      give you the best possible search experience.`),
       width/2,
       height/4 - 30
     );

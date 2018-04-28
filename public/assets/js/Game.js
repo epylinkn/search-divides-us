@@ -16,8 +16,8 @@ class Game {
   }
 
   draw() {
-    background(mapImage, 1);
-
+    background(browser, 1);
+    image(mapImage, 0,0,width,height);
     if (!this.neighborhood) {
       // TODO: loading bar
       return;
@@ -26,6 +26,6 @@ push();
 imageMode(CENTER)
     image(this.mask, width/2, height/2, width,height);
 pop();
-    image(you, width-100, 0, 100, 100);
+    image(you, 1350, 80, 100,100);
   }
 }

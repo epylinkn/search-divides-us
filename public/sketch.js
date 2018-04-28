@@ -27,6 +27,7 @@ let raceLabels = [
   "asian",
   "white",
 ];
+
 let educationLabels = [
   "less-than-high-school",
   "high-school",
@@ -39,7 +40,7 @@ function preload(){
   roboto = loadFont('assets/fonts/RobotoMono.ttf');
 
   mapImage = loadImage('assets/images/map.png');
-
+  browser = loadImage('assets/images/browser.png')
   blackf = loadImage('assets/images/black-f.png');
   whitef = loadImage('assets/images/white-f.png');
   hispf = loadImage('assets/images/hispanic-f.png');
@@ -89,7 +90,6 @@ function setup() {
   // Preload scenes. Preloading is normally optional
   // ... but needed if showNextScene() is used.
   mgr.addScene(ModelTrainer);
-
   mgr.addScene(Intro);
   mgr.addScene(Profile);
   mgr.addScene(Game);

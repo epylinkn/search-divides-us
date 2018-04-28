@@ -97,6 +97,9 @@ class Profile {
       case 'V':
         selections.education = 3;
         break;
+      case 'B':
+        selections.education = 4;
+        break;
 
       case 'I':
         // TODO: ?

@@ -32,6 +32,8 @@ class Prompt {
   keyPressed() {
     switch(key) {
       case 'P':
+        randomSound.play();
+
         selections = {
           income: random(incomeLabels.length),
           race: random(raceLabels.length),

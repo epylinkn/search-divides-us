@@ -10,6 +10,9 @@ let masks;
 
 let buttonPressed;
 
+let buttonSound;
+let randomSound;
+
 let buttonW = 200;
 let buttonH = 50;
 
@@ -60,6 +63,13 @@ function preload(){
     loadImage('assets/images/mask5.png'),
     loadImage('assets/images/mask6.png'),
   ]
+
+  soundFormats('mp3', 'ogg');
+  buttonSound = loadSound('assets/sounds/game-sound-correct-131660.mp3');
+  // buttonSound = loadSound('assets/sounds/acme-siren-331610.mp3');
+  // buttonSound = loadSound('assets/sounds/pipe9-13290.mp3');
+
+  randomSound = loadSound('assets/sounds/slot-payoff-69690.mp3');
 }
 
 function setup() {

@@ -103,6 +103,7 @@ class Profile {
         break;
       case 'O':
         if (this.canSeeNextScene()) {
+          buttonSound.play();
           this.sceneManager.showNextScene();
         } else {
           Debug.debounceTitle("Fill everything out, doofus.")

@@ -41,6 +41,7 @@ class Intro {
 
       case 'I':
       case 'O':
+        buttonSound.play();
       case 'P':
       case 'CATCH':
         this.sceneManager.showNextScene();

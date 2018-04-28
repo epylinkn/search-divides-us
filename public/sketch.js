@@ -1,4 +1,123 @@
-var portName = '/dev/cu.usbmodem1421';
+var portName = '/dev/cu.usbmodem14311';
+var options = { baudrate: 115200 };
+var serial;
+var inData;
+
+let mgr;
+let you;
+
+let masks;
+
+let buttonPressed;
+
+let buttonW = 200;
+let buttonH = 50;
+
+let selections = {};
+let incomeLabels = [
+  "lower",
+  "middle",
+  "upper-middle",
+  "upper",
+];
+let raceLabels = [
+  "black",
+  "hispanic",
+  "other",
+  "asian",
+  "white",
+];
+let educationLabels = [
+  "less-than-high-school",
+  "high-school",
+  "some-college",
+  "bachelors",
+  "advanced",
+];
+
+function preload(){
+  roboto = loadFont('assets/fonts/RobotoMono.ttf');
+
+  mapImage = loadImage('assets/images/map.png');
+
+  blackf = loadImage('assets/images/black-f.png');
+  whitef = loadImage('assets/images/white-f.png');
+  hispf = loadImage('assets/images/hispanic-f.png');
+  asianf = loadImage('assets/images/asian-f.png');
+
+  blackm = loadImage('assets/images/black-m.png');
+  whitem = loadImage('assets/images/white-m.png');
+  hispm = loadImage('assets/images/hispanic-m.png');
+  asianm = loadImage('assets/images/asian-m.png');
+
+  you = blackf;
+
+  masks = [
+    loadImage('assets/images/mask1.png'),
+    loadImage('assets/images/mask2.png'),
+    loadImage('assets/images/mask3.png'),
+    loadImage('assets/images/mask4.png'),
+    loadImage('assets/images/mask5.png'),
+    loadImage('assets/images/mask6.png'),
+  ]
+}
+
+function setup() {
+  mgr = new SceneManager();
+
+  serial = new p5.SerialPort();
+  // serial.on('list', console.log);
+  serial.on('connected', serverConnected);
+  serial.on('open', portOpen);
+  serial.on('data', serialEvent);
+  serial.on('error', serialError);
+  serial.on('close', portClose);
+
+  serial.list();
+  serial.open(portName, options);
+  serial.clear();
+
+  // createCanvas(1100, 800);
+  createCanvas(windowWidth, windowHeight);
+
+  rectMode(CENTER);
+  textAlign(CENTER);
+
+  textFont(roboto);
+  textSize(16);
+
+  // Preload scenes. Preloading is normally optional
+  // ... but needed if showNextScene() is used.
+  mgr.addScene(ModelTrainer);
+
+  mgr.addScene(Intro);
+  mgr.addScene(Profile);
+  mgr.addScene(Game);
+  mgr.addScene(Prompt);
+  mgr.addScene(Outro);
+
+  mgr.showScene(ModelTrainer);
+}
+
+function showNextScene() {
+  mgr.showNextScene();
+}
+
+function draw() {
+  mgr.draw();
+}
+
+function mousePressed() {
+  mgr.mousePressed();
+}
+
+function keyPressed() {
+  console.log(key, "is pressed");
+  console.log(keyCode, "is pressed");
+
+  switch(key) {
+    //== Scenes
+    case '0':
       mgr.showScene( Debug );
       break;
     case '1':

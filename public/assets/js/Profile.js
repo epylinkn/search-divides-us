@@ -22,10 +22,7 @@ class Profile {
     // TODO: animate profile as selections change
     image(you, width/2-100,height/3,200,200);
 
-
-    let yHeight = height / 2 + 60;
-    textSize(20);
-    text("TURN KNOBS AND THEN PRESS ENTER TO FIND A HOME", width/2, height-100);
+    displayInstruction("TURN KNOBS AND THEN PRESS ENTER TO FIND A NEIGHBORHOOD");
 
     select("#race-label").html(placeholder(raceLabels[selections.race]));
     select("#inc-label").html(placeholder(incomeLabels[selections.income]));

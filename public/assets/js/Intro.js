@@ -13,8 +13,7 @@ class Intro {
     text("We're a new kind of search engine.", width/2, height/2 - 20);
     text("And we want to help you find the perfect home.", width/2, height/2 + 10);
 
-    textSize(28);
-    text("PRESS ENTER TO START", width/2, height/2+80);
+    displayInstruction("PRESS ENTER TO START");
   }
 
   keyPressed() {

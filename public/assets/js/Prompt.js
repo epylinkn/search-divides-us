@@ -24,9 +24,7 @@ class Prompt {
     text("We have included (and excluded you) from search results in different neighborhoods.", width/2, yHeight - 20)
     text("What do you think? Does this neighborhood match the ideal place you would like to live?", width/2, yHeight + 10)
 
-    yHeight = height - 200;
-    textSize(24);
-    text("PRESS RANDOM BUTTON TO TRY AS SOMEONE DIFFERENT", width/2, yHeight + 20);
+    displayInstruction("PULL THE LEVER TO TRY AS SOMEONE DIFFERENT");
   }
 
   keyPressed() {

@@ -249,12 +249,25 @@ function portClose() {
   print('The serial port closed.');
 }
 
+
+// Utilities
 function squish(str) {
   return str.replace(/ +(?= )/g,'');
 }
 
 function placeholder(str) {
   return (str === undefined) ? "---" : str;
+}
+
+function displayInstruction(str) {
+  push();
+
+  fill("white")
+  textAlign(CENTER, CENTER)
+  textSize(width / 50);
+  text(str, width/2, height-50);
+
+  pop();
 }
 
 //KATHY TRYING TO MAKE THINGS WORK WITH THE IMAGE ....

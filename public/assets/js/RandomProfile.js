@@ -19,12 +19,20 @@ class RandomProfile {
     fill(255);
 
     if (you) {
-      image(you, width/2-100,height/3,200,200);
+      let size = this.stopRandomizing ? this.pulsingSize() : 200;
+      push()
+      imageMode(CENTER)
+      image(you, width/2,height/2,size,size);
+      pop()
     }
 
     select("#inc-label").html(placeholder(incomeLabels[selections.income]));
     select("#race-label").html(placeholder(raceLabels[selections.race]));
     select("#edu-label").html(placeholder(educationLabels[selections.education]));
+  }
+
+  pulsingSize() {
+    return 200 + 20 * sin(millis() / 100)
   }
 
   soundEndHandler() {

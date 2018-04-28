@@ -15,9 +15,9 @@ class Prompt {
 
     yHeight = height / 2 - 250;
     textSize(18);
-    text("income is " + incomeLabels[selections.income], width/2, yHeight);
-    text("race is " + raceLabels[selections.race], width/2, yHeight + 30);
-    text("education is " + educationLabels[selections.education], width/2, yHeight + 60);
+    text("income is " + incomeValues[selections.income], width/2, yHeight);
+    text("race is " + raceValues[selections.race], width/2, yHeight + 30);
+    text("education is " + educationValues[selections.education], width/2, yHeight + 60);
 
     yHeight = height / 2;
     textSize(16);
@@ -33,9 +33,9 @@ class Prompt {
         randomSound.play();
 
         selections = {
-          income: random(incomeLabels.length),
-          race: random(raceLabels.length),
-          education: random(educationLabels.length),
+          income: random(incomeValues.length),
+          race: random(raceValues.length),
+          education: random(educationValues.length),
         }
 
         this.sceneManager.showScene( Game );

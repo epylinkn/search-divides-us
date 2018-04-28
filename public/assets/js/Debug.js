@@ -22,9 +22,9 @@ class Debug {
     let spacing = windowWidth / 3;
 
     let labelLookup = [
-      incomeLabels,
-      raceLabels,
-      educationLabels
+      incomeValues,
+      raceValues,
+      educationValues
     ];
 
     ["income", "race", "education"].forEach(function(key) {

@@ -17,11 +17,24 @@ let buttonW = 200;
 let buttonH = 50;
 
 let selections = {};
-let incomeLabels = [
+let incomeValues = [
   "lower",
   "middle",
   "upper-middle",
   "upper",
+];
+let incomeLabels = [
+  "lower class",
+  "middle class",
+  "upper middle class",
+  "upper class",
+];
+let raceValues = [
+  "black",
+  "hispanic",
+  "other",
+  "asian",
+  "white",
 ];
 let raceLabels = [
   "black",
@@ -30,12 +43,19 @@ let raceLabels = [
   "asian",
   "white",
 ];
-let educationLabels = [
+let educationValues = [
   "less-than-high-school",
   "high-school",
   "some-college",
   "bachelors",
   "advanced",
+];
+let educationLabels = [
+  "below high school",
+  "high school or equivalent",
+  "some college / Associates's Degree",
+  "Bachelor's Degree",
+  "Advanced Degree",
 ];
 
 function preload(){
@@ -229,15 +249,15 @@ function serialEvent() {
 
   //=== rotary values
   if (input_label == "income") {
-    selections.income = incomeLabels.indexOf(input_value);
+    selections.income = incomeValues.indexOf(input_value);
   }
 
   if (input_label == "race") {
-    selections.race = raceLabels.indexOf(input_value);
+    selections.race = raceValues.indexOf(input_value);
   }
 
   if (input_label == "education") {
-    selections.education = educationLabels.indexOf(input_value);
+    selections.education = educationValues.indexOf(input_value);
   }
 }
 

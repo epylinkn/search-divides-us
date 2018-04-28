@@ -122,9 +122,9 @@ class ModelTrainer {
     ys.push([predX, predY]);
 
     xs.push([
-      raceLabels.indexOf(unlabeledData[this.dataIndex][0]),
-      educationLabels.indexOf(unlabeledData[this.dataIndex][1]),
-      incomeLabels.indexOf(unlabeledData[this.dataIndex][2]),
+      raceValues.indexOf(unlabeledData[this.dataIndex][0]),
+      educationValues.indexOf(unlabeledData[this.dataIndex][1]),
+      incomeValues.indexOf(unlabeledData[this.dataIndex][2]),
     ])
 
     this.dataIndex += 1;

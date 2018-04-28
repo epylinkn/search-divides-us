@@ -24,12 +24,10 @@ class Profile {
 
     displayInstruction("TURN KNOBS AND THEN PRESS ENTER TO FIND A NEIGHBORHOOD");
 
-    select("#race-label").html(placeholder(raceLabels[selections.race]));
     select("#inc-label").html(placeholder(incomeLabels[selections.income]));
+    select("#race-label").html(placeholder(raceLabels[selections.race]));
     select("#edu-label").html(placeholder(educationLabels[selections.education]));
-}
-
-
+  }
 
   canSeeNextScene() {
     if (selections.income == undefined ||

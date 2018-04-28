@@ -19,7 +19,7 @@ class RandomProfile {
     fill(255);
 
     if (you) {
-      let size = this.stopRandomizing ? this.pulsingSize() : 250;
+      let size = this.getProfileSize()
       push()
       imageMode(CENTER)
       image(you, width/2,height/2 - 85,size,size);
@@ -31,7 +31,9 @@ class RandomProfile {
     select("#edu-label").html(placeholder(educationLabels[selections.education]));
   }
 
-  pulsingSize() {
+  getProfileSize() {
+    if (!this.stopRandomizing || this.stopPulsing) return 250;
+
     return 250 + 20 * sin(millis() / 100)
   }
 
@@ -39,8 +41,12 @@ class RandomProfile {
     this.stopRandomizing = true;
 
     setTimeout(function() {
+      this.stopPulsing = true;
+    }.bind(this), 2000);
+
+    setTimeout(function() {
       mgr.showScene( Searching )
-    }, 2000);
+    }, 3000);
   }
 
   randomizeSelections() {

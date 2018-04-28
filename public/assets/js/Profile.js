@@ -9,20 +9,32 @@ class Profile {
 
   draw() {
     background(browser,1);
+
+    push();
     fill(255);
 
+    textSize(30);
     text(
-      squish(`Tell us some data about yourself so that we can
-      give you the best possible search experience. Turn the knobs to select:`),
+      squish(`YOUR PROFILE`),
       width/2,
-      height/4 - 30
+      height/4 - 100
+
+    );
+
+    textSize(20);
+    textLeading(35);
+
+    text(
+      squish(`Tell us about yourself so we can give you
+      the best possible search experience.`),
+      width/2,
+      height/4 - 50
     );
 
     // TODO: animate profile as selections change
-    image(you, width/2-100,height/3,200,200);
-
-    push();
     imageMode(CENTER)
+    image(you, width/2,height/2-85,300,300);
+
     tint(255, 255);  // Display at FULL opacity
     image(button_search, width/2,height-100,328,75)
     pop();
@@ -45,6 +57,7 @@ class Profile {
   }
 
   keyPressed() {
+    changeYou();
     switch(key) {
       //== Income
       case 'Q':

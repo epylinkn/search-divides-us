@@ -65,6 +65,8 @@ function preload(){
   browser = loadImage('assets/images/browser.png')
   welcome = loadImage('assets/images/welcome.png');
   button_search = loadImage('assets/images/button_search.png')
+  lever = loadImage('assets/images/lever.png')
+
   blackf = loadImage('assets/images/black-f.png');
   whitef = loadImage('assets/images/white-f.png');
   hispf = loadImage('assets/images/hispanic-f.png');
@@ -291,6 +293,23 @@ function displayInstruction(str) {
   pop();
 }
 
+function changeYou(){
+  if(selections.race == 0){
+    you = blackf;
+  }
+  if(selections.race == 1){
+    you = hispf;
+  }
+  if(selections.race == 2){
+    you = hispf;
+  }
+  if(selections.race == 3){
+    you = asianf;
+  }
+  if(selections.race == 4){
+    you = whitef;
+  }
+}
 //KATHY TRYING TO MAKE THINGS WORK WITH THE IMAGE ....
 // function getRace(){
 //     if(selections.race == undefined){

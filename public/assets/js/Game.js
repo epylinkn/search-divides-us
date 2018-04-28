@@ -16,6 +16,7 @@ class Game {
   }
 
   draw() {
+    changeYou();
     background(browser, 1);
     image(mapImage, 0,0,width,height);
     if (!this.neighborhood) {
@@ -25,7 +26,10 @@ class Game {
 push();
 imageMode(CENTER)
     image(this.mask, width/2, height/2, width,height);
+    image(you, width-240, 200, 150,150);
+    textSize(20);
+    fill(255);
+    text('YOU',width-240, 320)
 pop();
-    image(you, 1350, 80, 100,100);
   }
 }

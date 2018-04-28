@@ -62,7 +62,9 @@ function preload(){
   roboto = loadFont('assets/fonts/RobotoMono.ttf');
 
   mapImage = loadImage('assets/images/map.png');
-
+  browser = loadImage('assets/images/browser.png')
+  welcome = loadImage('assets/images/welcome.png');
+  button_search = loadImage('assets/images/button_search.png')
   blackf = loadImage('assets/images/black-f.png');
   whitef = loadImage('assets/images/white-f.png');
   hispf = loadImage('assets/images/hispanic-f.png');
@@ -119,7 +121,6 @@ function setup() {
   // Preload scenes. Preloading is normally optional
   // ... but needed if showNextScene() is used.
   mgr.addScene(ModelTrainer);
-
   mgr.addScene(Intro);
   mgr.addScene(Profile);
   mgr.addScene(Game);

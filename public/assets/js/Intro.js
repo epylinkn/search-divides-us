@@ -1,19 +1,22 @@
 class Intro {
   draw() {
     rectMode(CENTER)
-    background(mapImage,1);
+    background(browser,1);
+    image(mapImage,0,0,width, height);
     fill(255);
-    rect(width/2, height/2, 0.7 * width, 250);
+    // rect(width/2, height/2, 0.7 * width, 250);
 
     fill(0);
     textSize(20);
-    text("Welcome to PHP: Personalized Housing Provider!", width/2, height/2-60);
+    // text("Welcome to PHP: Personalized Housing Provider!", width/2, height/2-60);
+    //
+    // textSize(16);
+    // text("We're a new kind of search engine.", width/2, height/2 - 20);
+    // text("And we want to help you find the perfect home.", width/2, height/2 + 10);
 
-    textSize(16);
-    text("We're a new kind of search engine.", width/2, height/2 - 20);
-    text("And we want to help you find the perfect home.", width/2, height/2 + 10);
+    image(welcome, 0,0, width,height)
 
-    displayInstruction("PRESS ENTER TO START");
+    // displayInstruction("PRESS ENTER TO START");
   }
 
   keyPressed() {

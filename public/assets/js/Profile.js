@@ -8,13 +8,12 @@ class Profile {
   }
 
   draw() {
-    background(0);
+    background(browser,1);
     fill(255);
 
     text(
-      squish(`Like all search engines, we collect data about our users
-      to give you the best possible search experience.
-      Please tell us a little bit about yourself to receive your personalized result.`),
+      squish(`Tell us some data about yourself so that we can
+      give you the best possible search experience. Turn the knobs to select:`),
       width/2,
       height/4 - 30
     );
@@ -22,11 +21,17 @@ class Profile {
     // TODO: animate profile as selections change
     image(you, width/2-100,height/3,200,200);
 
-    displayInstruction("TURN KNOBS AND THEN PRESS ENTER TO FIND A NEIGHBORHOOD");
+    push();
+    imageMode(CENTER)
+    tint(255, 255);  // Display at FULL opacity
+    image(button_search, width/2,height-100,328,75)
+    pop();
 
     select("#inc-label").html(placeholder(incomeLabels[selections.income]));
     select("#race-label").html(placeholder(raceLabels[selections.race]));
     select("#edu-label").html(placeholder(educationLabels[selections.education]));
+
+    // displayInstruction("TURN KNOBS AND THEN PRESS ENTER TO FIND A NEIGHBORHOOD");
   }
 
   canSeeNextScene() {

@@ -176,6 +176,9 @@ function keyPressed() {
   console.log(key, "is pressed");
   console.log(keyCode, "is pressed");
 
+  // dispatch via the SceneManager.
+  mgr.keyPressed();
+
   switch(key) {
     //== Scenes
     case '0':
@@ -198,10 +201,20 @@ function keyPressed() {
     case ' ':
       mgr.showNextScene();
       break;
-  }
 
-  // dispatch via the SceneManager.
-  mgr.keyPressed();
+    case 'I':
+      restartGame()
+      break;
+  }
+}
+
+function restartGame() {
+  neighborhood = undefined;
+  mask = undefined;
+  you = blackf;
+  selections = {};
+
+  mgr.showScene( Intro )
 }
 
 function pressedReset() {

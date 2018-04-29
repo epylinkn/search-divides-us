@@ -108,7 +108,6 @@ class Profile {
         break;
 
       case 'I':
-        // TODO: ?
         break;
       case 'O':
         if (this.canSeeNextScene()) {

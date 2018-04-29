@@ -75,7 +75,5 @@ class RandomProfile {
     selections.education = newEducationSelection;
 
     changeYou();
-
-    // you = youLookup[raceValues[selections.race]] || you;
   }
 }

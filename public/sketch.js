@@ -151,8 +151,7 @@ function setup() {
   serial.open(portName, options);
   serial.clear();
 
-  // createCanvas(1100, 800);
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(1350, 885);
 
   rectMode(CENTER);
   textAlign(CENTER);

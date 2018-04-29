@@ -22,7 +22,7 @@ class RandomProfile {
       let size = this.getProfileSize()
       push()
       imageMode(CENTER)
-      image(you, width/2,height/2 - 85,size,size);
+      image(you, width/2,height/2-70,size,size);
       pop()
     }
 
@@ -32,9 +32,9 @@ class RandomProfile {
   }
 
   getProfileSize() {
-    if (!this.stopRandomizing || this.stopPulsing) return 250;
+    if (!this.stopRandomizing || this.stopPulsing) return 220;
 
-    return 250 + 20 * sin(millis() / 100)
+    return 220 + 20 * sin(millis() / 100)
   }
 
   soundEndHandler() {

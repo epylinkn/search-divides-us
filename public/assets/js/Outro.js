@@ -8,11 +8,11 @@ class Outro {
 
     // TODO: replace this...
     fill("pink")
-    ellipse(width - 100, 50, 50, 50);
+    ellipse(120, 90, 50, 50);
 
     fill('white')
     textSize(16)
-    text("START OVER", width - 100, 100, 125, 50);
+    text("START OVER", 120, 130, 125, 50);
 
     textSize(30);
     text("AS SEGREGATED AS A CITY?",width/2,200);

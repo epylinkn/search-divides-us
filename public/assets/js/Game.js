@@ -6,7 +6,7 @@ class Game {
     push();
       imageMode(CENTER)
       image(mask, width/2, height/2, width, height);
-      image(you, 255, 385, 180,180);
+      image(you, 185, 290, 140,140);
     pop();
 
     firstPlay = false;
@@ -20,5 +20,5 @@ class Game {
         break;
       }
 
-    }   
+    }
 }

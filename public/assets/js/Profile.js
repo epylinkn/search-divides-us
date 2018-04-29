@@ -21,8 +21,8 @@ class Profile {
     //
     // );
 
-    textSize(20);
-    textLeading(35);
+    textSize(15);
+    textLeading(28);
 
     text(
       squish(`Tell us about yourself so we can give you
@@ -33,10 +33,10 @@ class Profile {
 
     // TODO: animate profile as selections change
     imageMode(CENTER)
-    image(you, width/2,height/2-85,250,250);
+    image(you, width/2,height/2-70,220,220);
 
     tint(255, 255);  // Display at FULL opacity
-    image(button_search, width/2,height-100,328,75)
+    image(button_search, width/2,height-100,285,65)
     pop();
 
     select("#inc-label").html(placeholder(incomeLabels[selections.income]));

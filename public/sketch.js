@@ -1,7 +1,6 @@
-var portName = '/dev/cu.usbmodem14311';
-var options = { baudrate: 115200 };
-var serial;
-var inData;
+let portName = '/dev/cu.usbmodem14321';
+let options = { baudrate: 115200 };
+let serial;
 
 let mgr;
 let you;
@@ -142,10 +141,9 @@ function setup() {
   mgr = new SceneManager();
 
   serial = new p5.SerialPort();
-  serial.on('connected', serverConnected);
   serial.on('open', portOpen);
-  serial.on('data', serialEvent);
   serial.on('error', serialError);
+  serial.on('data', serialEvent);
   serial.on('close', portClose);
 
   serial.list();
@@ -258,15 +256,8 @@ function button(x,y, buttonText){
   pop();
 }
 
-function serverConnected() {
-  print('connected to server.');
-}
-
 function portOpen() {
   print('the serial port opened.')
-}
-
-function serialEvent() {
 }
 
 function serialError(err) {
@@ -277,6 +268,10 @@ function portClose() {
   print('The serial port closed.');
 }
 
+function serialEvent() {
+  // NB. Broadcast what arduino repeats back!
+  print(serial.readLine())
+}
 
 // Utilities
 function squish(str) {

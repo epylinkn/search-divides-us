@@ -1,9 +1,18 @@
 class Outro {
+  enter() {
+    setTimeout(restartGame, 30 * 1000);
+  }
+
   draw() {
     background(browser,0,0,width,height);
-    button(width/2,height-100,"START OVER");
 
-    fill(255);
+    // TODO: replace this...
+    fill("pink")
+    ellipse(width - 100, 50, 50, 50);
+
+    fill('white')
+    textSize(16)
+    text("START OVER", width - 100, 100, 125, 50);
 
     textSize(30);
     text("AS SEGREGATED AS A CITY?",width/2,200);

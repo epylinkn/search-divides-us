@@ -8,21 +8,16 @@ class Searching {
       selections.income
     ])
 
-    console.log(prediction)
-    let predY = prediction[1];
+    let predY = constrain(prediction[1], 0, height);
 
     // NB. Hacky classifier, let's just deal with predY
-    neighborhood = map(predY, 0, height+1, 7, 1)
-    // mask = masks[floor(neighborhood - 1)]
+    neighborhood = floor(map(predY, 0, height+1, 1, 7));
 
-    if (firstPlay == true){
-    mask = masks[floor(neighborhood - 1)]
+    if (firstPlay == true) {
+      mask = masks[neighborhood - 1];
+    } else {
+      mask = randommasks[neighborhood - 1];
     }
-    else if (firstPlay==false){
-    mask = randommasks[floor(neighborhood - 1)]
-    }
-
-    console.log(mask)
   }
 
   draw() {

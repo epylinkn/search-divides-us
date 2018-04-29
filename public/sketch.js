@@ -19,6 +19,8 @@ let randomSound;
 let buttonW = 200;
 let buttonH = 50;
 
+let firstPlay = true;
+
 let selections = {};
 let incomeValues = [
   "lower",
@@ -55,8 +57,8 @@ let educationValues = [
 ];
 let educationLabels = [
   "below high school",
-  "high school or equivalent",
-  "some college / Associates's Degree",
+  "high school",
+  "some college",
   "Bachelor's Degree",
   "Advanced Degree",
 ];
@@ -66,8 +68,10 @@ let sceneLookup = {
   Profile: Profile,
   Searching: Searching,
   Game: Game,
+  Explore: Explore,
   Prompt: Prompt,
   RandomProfile: RandomProfile,
+  RandomGame: RandomGame,
   Outro: Outro
 }
 
@@ -81,11 +85,13 @@ function preload(){
   welcome = loadImage('assets/images/welcome.png');
   button_search = loadImage('assets/images/button_search.png')
   lever = loadImage('assets/images/lever.png')
+  explore = loadImage('assets/images/whathappened.png')
 
   blackf = loadImage('assets/images/black-f.png');
   whitef = loadImage('assets/images/white-f.png');
   hispf = loadImage('assets/images/hispanic-f.png');
   asianf = loadImage('assets/images/asian-f.png');
+  otherf = loadImage('assets/images/other-f.png');
 
   blackm = loadImage('assets/images/black-m.png');
   whitem = loadImage('assets/images/white-m.png');
@@ -100,6 +106,7 @@ function preload(){
     // "other": ???
     "asian": asianf,
     "white": whitef,
+    "other": otherf,
   }
 
   masks = [
@@ -110,6 +117,16 @@ function preload(){
     loadImage('assets/images/mask5.png'),
     loadImage('assets/images/mask6.png'),
   ]
+
+  randommasks = [
+    loadImage('assets/images/randommask1.png'),
+    loadImage('assets/images/randommask2.png'),
+    loadImage('assets/images/randommask3.png'),
+    loadImage('assets/images/randommask4.png'),
+    loadImage('assets/images/randommask5.png'),
+    loadImage('assets/images/randommask6.png'),
+  ]
+
 
   soundFormats('mp3', 'ogg');
   buttonSound = loadSound('assets/sounds/game-sound-correct-131660.mp3');
@@ -149,8 +166,10 @@ function setup() {
   mgr.addScene(Profile);
   mgr.addScene(Searching);
   mgr.addScene(Game);
+  mgr.addScene(Explore);
   mgr.addScene(Prompt);
   mgr.addScene(RandomProfile);
+  mgr.addScene(RandomGame);
   mgr.addScene(Outro);
 
   mgr.showScene(Intro);
@@ -313,7 +332,7 @@ function changeYou(){
     you = hispf;
   }
   if(selections.race == 2){
-    you = hispf;
+    you = otherf;
   }
   if(selections.race == 3){
     you = asianf;
@@ -322,23 +341,3 @@ function changeYou(){
     you = whitef;
   }
 }
-//KATHY TRYING TO MAKE THINGS WORK WITH THE IMAGE ....
-// function getRace(){
-//     if(selections.race == undefined){
-//       you = blackf;
-//     }
-//     if (selections.race == "black"){
-//       you = blackf;
-//     }
-//     if (selections.race == "hispanic"){
-//       you = hispf;
-//     }
-//     if (selections.race == "asian"){
-//       you = asianf;
-//     }
-//     if (selections.race == "white"){
-//       you = whitef;
-//     }
-//
-//     console.log(selections.race);
-//   }

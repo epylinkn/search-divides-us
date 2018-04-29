@@ -1,4 +1,4 @@
-class Game {
+class RandomGame {
   draw() {
     background(browser, 1);
     image(mapImage, 0,0,width,height);
@@ -8,17 +8,17 @@ class Game {
       image(mask, width/2, height/2, width, height);
       image(you, 255, 385, 180,180);
     pop();
-
-    firstPlay = false;
   }
 
   keyPressed() {
     switch(key) {
       case 'O':
         buttonSound.play();
-        this.sceneManager.showScene(Explore);
+        this.sceneManager.showScene(Outro);
         break;
-      }
-
-    }   
+      case 'P':
+        this.sceneManager.showScene(RandomProfile);
+        break;
+    }
+  }
 }

@@ -13,15 +13,28 @@ class Searching {
 
     // NB. Hacky classifier, let's just deal with predY
     neighborhood = map(predY, 0, height+1, 7, 1)
+    // mask = masks[floor(neighborhood - 1)]
+
+    if (firstPlay == true){
     mask = masks[floor(neighborhood - 1)]
+    }
+    else if (firstPlay==false){
+    mask = randommasks[floor(neighborhood - 1)]
+    }
+
     console.log(mask)
   }
 
   draw() {
     let currentMillis = millis();
     if (neighborhood && currentMillis > this.loadingEndAt) {
-      mgr.showNextScene();
+      if (firstPlay == true){
+          mgr.showScene(Game);
     }
+    else if (firstPlay == false){
+         mgr.showScene(RandomGame)
+    }
+  }
 
     push()
 

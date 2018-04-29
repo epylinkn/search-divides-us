@@ -13,13 +13,13 @@ class Profile {
     push();
     fill(255);
 
-    textSize(30);
-    text(
-      squish(`YOUR PROFILE`),
-      width/2,
-      height/4 - 100
-
-    );
+    // textSize(30);
+    // text(
+    //   squish(`YOUR PROFILE`),
+    //   width/2,
+    //   height/4 - 100
+    //
+    // );
 
     textSize(20);
     textLeading(35);

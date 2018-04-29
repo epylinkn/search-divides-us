@@ -103,12 +103,12 @@ function preload(){
   }
 
   masks = [
-    loadImage('assets/images/mask1.png'),
-    loadImage('assets/images/mask2.png'),
-    loadImage('assets/images/mask3.png'),
-    loadImage('assets/images/mask4.png'),
+    loadImage('assets/images/mask6.png'), // worst
     loadImage('assets/images/mask5.png'),
-    loadImage('assets/images/mask6.png'),
+    loadImage('assets/images/mask4.png'),
+    loadImage('assets/images/mask3.png'),
+    loadImage('assets/images/mask2.png'),
+    loadImage('assets/images/mask1.png'), // best
   ]
 
   soundFormats('mp3', 'ogg');
@@ -156,7 +156,7 @@ function setup() {
   mgr.showScene(Intro);
 
   let xs = [[2,1,1],[0,3,3],[1,0,2],[4,2,1]]
-  let ys = [[393,414],[382,44],[387,184],[409,706]]
+  let ys = [[393,height/2],[382,10],[387,height/5*2],[409,height-10]]
   mlModel.train(xs, ys);
 }
 

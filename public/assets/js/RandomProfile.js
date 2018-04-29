@@ -8,6 +8,9 @@ class RandomProfile {
   leave() {
     this.stopRandomizing = false;
     select(".foo").hide();
+
+    clearTimeout(this.stopPulsingTimer);
+    clearTimeout(this.sceneEndTimer);
   }
 
   draw() {
@@ -40,11 +43,11 @@ class RandomProfile {
   soundEndHandler() {
     this.stopRandomizing = true;
 
-    setTimeout(function() {
+    this.stopPulsingTimer = setTimeout(function() {
       this.stopPulsing = true;
     }.bind(this), 2000);
 
-    setTimeout(function() {
+    this.sceneEndTimer = setTimeout(function() {
       mgr.showScene( Searching )
     }, 3000);
   }

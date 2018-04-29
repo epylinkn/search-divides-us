@@ -1,6 +1,10 @@
 class Outro {
   enter() {
-    setTimeout(restartGame, 30 * 1000);
+    this.autoRestart = setTimeout(restartGame, 5 * 1000);
+  }
+
+  leave() {
+    clearTimeout(this.autoRestart);
   }
 
   draw() {

@@ -1,4 +1,8 @@
 class Outro {
+  enter() {
+    setTimeout(restartGame, 30 * 1000);
+  }
+
   draw() {
     background(0);
 

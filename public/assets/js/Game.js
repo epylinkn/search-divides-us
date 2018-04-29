@@ -1,4 +1,4 @@
-class Game {
+class Game extends GenericScene {
   setup() {
     firstPlay = false;
   }

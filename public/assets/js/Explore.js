@@ -1,9 +1,7 @@
-class Explore {
+class Explore extends GenericScene {
   draw() {
-      background(explore, 0,0,width,height);
-    }
-
-
+    background(explore, 0,0,width,height);
+  }
 
   keyPressed() {
     switch(key) {

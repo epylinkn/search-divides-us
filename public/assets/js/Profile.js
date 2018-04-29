@@ -1,5 +1,6 @@
-class Profile {
+class Profile extends GenericScene {
   enter() {
+    super.enter()
     select(".foo").show();
   }
 

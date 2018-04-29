@@ -1,4 +1,4 @@
-class RandomGame {
+class RandomGame extends GenericScene {
   draw() {
     background(browser, 1);
     image(mapImage, 0,0,width,height);

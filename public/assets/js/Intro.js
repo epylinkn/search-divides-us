@@ -1,4 +1,4 @@
-class Intro {
+class Intro extends GenericScene {
   draw() {
     rectMode(CENTER)
     background(browser,1);

@@ -1,5 +1,6 @@
-class RandomProfile {
+class RandomProfile extends GenericScene {
   enter() {
+    super.enter()
     randomSound.onended(this.soundEndHandler.bind(this));
     randomSound.play();
     select(".foo").show();

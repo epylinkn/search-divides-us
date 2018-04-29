@@ -1,4 +1,4 @@
-class Prompt {
+class Prompt extends GenericScene {
   draw() {
     let yHeight;
 

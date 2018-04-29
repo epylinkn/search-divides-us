@@ -1,5 +1,6 @@
-class Searching {
+class Searching extends GenericScene {
   async enter() {
+    super.enter()
     this.loadingEndAt = millis() + 2000;
 
     let prediction = await mlModel.predict([

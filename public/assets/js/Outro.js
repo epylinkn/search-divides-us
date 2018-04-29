@@ -1,5 +1,6 @@
-class Outro {
+class Outro extends GenericScene {
   enter() {
+    super.enter()
     this.autoRestart = setTimeout(restartGame, 16 * 1000);
   }
 

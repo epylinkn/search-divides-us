@@ -1,22 +1,27 @@
 class Intro extends GenericScene {
+  setup() {
+    this.fadeTime = 2*1000;
+  }
+
+  enter() {
+    super.enter()
+    this.loadingEndAt = millis() + this.fadeTime;
+  }
+
   draw() {
-    rectMode(CENTER)
     background(browser,1);
-    image(mapImage,0,0,width, height);
-    fill(255);
-    // rect(width/2, height/2, 0.7 * width, 250);
+    image(mapTeaser,0,0,width, height);
 
-    fill(0);
-    textSize(20);
-    // text("Welcome to PHP: Personalized Housing Provider!", width/2, height/2-60);
-    //
-    // textSize(16);
-    // text("We're a new kind of search engine.", width/2, height/2 - 20);
-    // text("And we want to help you find the perfect home.", width/2, height/2 + 10);
+    let currentMillis = millis();
+        let diff = constrain(this.loadingEndAt - currentMillis, 0, this.fadeTime)
+        let alpha = map(diff, 0, this.fadeTime, 255, 0)
+        console.log(alpha)
 
-    image(welcome, 0,0, width,height)
+        push();
+          tint(255,alpha)
+          image(welcome, 0,0, width,height)
+        pop();
 
-    // displayInstruction("PRESS ENTER TO START");
   }
 
   keyPressed() {

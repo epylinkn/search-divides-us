@@ -84,6 +84,8 @@ function preload(){
 
   //map and browser frame
   mapImage = loadImage('assets/images/map.png');
+  mapTeaser = loadGif('assets/images/map_teaser.gif');
+
   browser = loadImage('assets/images/browser.png')
 
   //pngs as scenes (lol)
@@ -231,7 +233,6 @@ function restartGame() {
   you = blackf;
   selections = {};
   firstPlay = true;
-
   mgr.showScene( Intro )
 }
 

@@ -21,7 +21,7 @@ class Profile {
     //
     // );
 
-    textSize(15);
+    textSize(16);
     textLeading(28);
 
     text(

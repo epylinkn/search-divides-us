@@ -78,26 +78,28 @@ let sceneLookup = {
 function preload(){
   roboto = loadFont('assets/fonts/RobotoMono.ttf');
 
+  //misc assets
   searchIcon = loadImage('assets/images/search-icon.png');
+  button_search = loadImage('assets/images/button_search.png')
+  welcome = loadImage('assets/images/welcome.png');
 
+  //map and browser frame
   mapImage = loadImage('assets/images/map.png');
   browser = loadImage('assets/images/browser.png')
-  welcome = loadImage('assets/images/welcome.png');
-  button_search = loadImage('assets/images/button_search.png')
+
+  //pngs as scenes (lol)
   lever = loadImage('assets/images/lever.png')
   explore = loadImage('assets/images/whathappened.png')
+  outro = loadImage('assets/images/end.png')
 
+  //demographics
   blackf = loadImage('assets/images/black-f.png');
   whitef = loadImage('assets/images/white-f.png');
   hispf = loadImage('assets/images/hispanic-f.png');
   asianf = loadImage('assets/images/asian-f.png');
   otherf = loadImage('assets/images/other-f.png');
 
-  blackm = loadImage('assets/images/black-m.png');
-  whitem = loadImage('assets/images/white-m.png');
-  hispm = loadImage('assets/images/hispanic-m.png');
-  asianm = loadImage('assets/images/asian-m.png');
-
+  //set "you"
   you = blackf;
 
   youLookup = {

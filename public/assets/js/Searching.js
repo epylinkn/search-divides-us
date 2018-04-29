@@ -36,7 +36,7 @@ class Searching {
     imageMode(CENTER)
     image(searchIcon, width/2, height/2, 200, 200);
 
-    let xStart = width / 2 - 250;
+    let xStart = width / 2 - 225;
     let xWidth = 50;
     noStroke();
     fill('white')

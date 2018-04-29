@@ -24,12 +24,11 @@ class Searching {
     let currentMillis = millis();
     if (neighborhood && currentMillis > this.loadingEndAt) {
       if (firstPlay == true){
-          mgr.showScene(Game);
+        mgr.showScene(Game);
+      } else {
+        mgr.showScene(RandomGame)
+      }
     }
-    else if (firstPlay == false){
-         mgr.showScene(RandomGame)
-    }
-  }
 
     push()
 

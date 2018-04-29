@@ -1,15 +1,17 @@
 class Game {
+  setup() {
+    firstPlay = false;
+  }
+
   draw() {
     background(browser, 1);
     image(mapImage, 0,0,width,height);
 
     push();
-      imageMode(CENTER)
-      image(mask, width/2, height/2, width, height);
-      image(you, 185, 290, 140,140);
+    imageMode(CENTER)
+    image(mask, width/2, height/2, width, height);
+    image(you, 185, 290, 140,140);
     pop();
-
-    firstPlay = false;
   }
 
   keyPressed() {
@@ -19,6 +21,5 @@ class Game {
         this.sceneManager.showScene(Explore);
         break;
       }
-
     }
 }

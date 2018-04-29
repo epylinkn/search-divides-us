@@ -231,6 +231,7 @@ function restartGame() {
   mask = undefined;
   you = blackf;
   selections = {};
+  firstPlay = true;
 
   mgr.showScene( Intro )
 }

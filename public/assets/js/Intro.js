@@ -1,6 +1,5 @@
 class Intro {
   draw() {
-    firstPlay = true;
     rectMode(CENTER)
     background(browser,1);
     image(mapImage,0,0,width, height);

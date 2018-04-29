@@ -26,7 +26,7 @@ class Searching extends GenericScene {
     if (neighborhood && currentMillis > this.loadingEndAt) {
       if (firstPlay == true){
         mgr.showScene(Game);
-      } else {
+      } else if (firstPlay == false){
         mgr.showScene(RandomGame)
       }
     }

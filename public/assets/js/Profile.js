@@ -58,7 +58,6 @@ class Profile extends GenericScene {
   }
 
   keyPressed() {
-    changeYou();
     switch(key) {
       //== Income
       case 'Q':
@@ -121,5 +120,6 @@ class Profile extends GenericScene {
       case 'P':
         break;
     }
+    changeYou();
   }
 }

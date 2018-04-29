@@ -142,7 +142,6 @@ function setup() {
   mgr = new SceneManager();
 
   serial = new p5.SerialPort();
-  // serial.on('list', console.log);
   serial.on('connected', serverConnected);
   serial.on('open', portOpen);
   serial.on('data', serialEvent);
@@ -268,46 +267,6 @@ function portOpen() {
 }
 
 function serialEvent() {
-  let inString = serial.readLine();
-
-  if (inString.length <= 0) return;
-
-  // expect: <input-type>, <value>
-  console.log("inData: ", inData);
-  inData = inString.split(",");
-  if (inData.length != 2) return;
-
-  let input_label = inData[0];
-  let input_value = inData[1];
-
-  // IT'S A BUTTON!
-  if (input_label == "button") {
-    switch(input_value) {
-      case "reset":
-        pressedReset();
-        break;
-      case "search":
-        pressedSearch();
-        break;
-      case "random":
-        pressedRandom();
-        break;
-    }
-    return;
-  }
-
-  //=== rotary values
-  if (input_label == "income") {
-    selections.income = incomeValues.indexOf(input_value);
-  }
-
-  if (input_label == "race") {
-    selections.race = raceValues.indexOf(input_value);
-  }
-
-  if (input_label == "education") {
-    selections.education = educationValues.indexOf(input_value);
-  }
 }
 
 function serialError(err) {

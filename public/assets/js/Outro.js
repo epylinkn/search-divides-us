@@ -10,6 +10,5 @@ class Outro extends GenericScene {
 
   draw() {
     background(outro,0,0,width,height);
-
   }
 }

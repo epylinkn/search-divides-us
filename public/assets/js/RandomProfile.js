@@ -7,11 +7,13 @@ class RandomProfile extends GenericScene {
   }
 
   leave() {
-    this.stopRandomizing = false;
     select(".foo").hide();
 
     clearTimeout(this.stopPulsingTimer);
     clearTimeout(this.sceneEndTimer);
+
+    this.stopRandomizing = false;
+    this.stopPulsing = false;
   }
 
   draw() {

@@ -1,5 +1,11 @@
 class RandomGame extends GenericScene {
-  draw() {
+  enter() {
+    super.enter()
+
+    this.drawOnce()
+  }
+
+  drawOnce() {
     background(browser, 1);
     image(mapImage, 0,0,width,height);
 

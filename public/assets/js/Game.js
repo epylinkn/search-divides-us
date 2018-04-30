@@ -2,12 +2,13 @@ class Game extends GenericScene {
   enter() {
     super.enter()
     firstPlay = false;
+
+    this.drawOnce();
   }
 
-  draw() {
+  drawOnce() {
     background(browser, 1);
     image(mapImage, 0,0,width,height);
-
     push();
     imageMode(CENTER)
     image(mask, width/2, height/2, width, height);

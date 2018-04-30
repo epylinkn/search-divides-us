@@ -228,11 +228,16 @@ function keyPressed() {
 }
 
 function restartGame() {
-  neighborhood = undefined;
-  mask = undefined;
-  you = blackf;
-  selections = {};
-  firstPlay = true;
+  neighborhood = undefined
+  mask = undefined
+  you = blackf
+  firstPlay = true
+
+  selections = {}
+  select("#inc-label").html("---");
+  select("#race-label").html("---");
+  select("#edu-label").html("---");
+
   mgr.showScene( Intro )
 }
 

@@ -82,9 +82,9 @@ class RandomProfile extends GenericScene {
     selections.race = newRaceSelection;
     selections.education = newEducationSelection;
 
-    this.incomeLabel.html(placeholder(incomeLabels[selections.income]));
-    this.raceLabel.html(placeholder(raceLabels[selections.race]));
-    this.educationLabel.html(placeholder(educationLabels[selections.education]));
+    this.incomeLabel.html(incomeLabels[selections.income]);
+    this.raceLabel.html(raceLabels[selections.race]);
+    this.educationLabel.html(educationLabels[selections.education]);
 
     changeYou();
   }

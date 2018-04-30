@@ -1,5 +1,11 @@
 class Explore extends GenericScene {
-  draw() {
+  enter() {
+    super.enter()
+
+    this.drawOnce()
+  }
+
+  drawOnce() {
     background(explore, 0,0,width,height);
   }
 

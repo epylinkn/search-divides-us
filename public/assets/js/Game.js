@@ -1,5 +1,6 @@
 class Game extends GenericScene {
-  setup() {
+  enter() {
+    super.enter()
     firstPlay = false;
   }
 

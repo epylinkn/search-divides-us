@@ -1,9 +1,12 @@
 class Prompt extends GenericScene {
-  draw() {
-    let yHeight;
+  enter() {
+    super.enter()
 
+    this.drawOnce()
+  }
+
+  drawOnce() {
     background(lever, 0,0,width,height);
-    fill(255);
   }
 
   keyPressed() {

@@ -1,4 +1,10 @@
 class RandomProfile extends GenericScene {
+  setup() {
+    this.incomeLabel = select("#inc-label")
+    this.raceLabel = select("#race-label")
+    this.educationLabel = select("#edu-label")
+  }
+
   enter() {
     super.enter()
     randomSound.onended(this.soundEndHandler.bind(this));
@@ -31,10 +37,6 @@ class RandomProfile extends GenericScene {
       image(you, width/2,height/2-70,size,size);
       pop()
     }
-
-    select("#inc-label").html(placeholder(incomeLabels[selections.income]));
-    select("#race-label").html(placeholder(raceLabels[selections.race]));
-    select("#edu-label").html(placeholder(educationLabels[selections.education]));
   }
 
   getProfileSize() {
@@ -79,6 +81,10 @@ class RandomProfile extends GenericScene {
     selections.income = newIncomeSelection;
     selections.race = newRaceSelection;
     selections.education = newEducationSelection;
+
+    this.incomeLabel.html(placeholder(incomeLabels[selections.income]));
+    this.raceLabel.html(placeholder(raceLabels[selections.race]));
+    this.educationLabel.html(placeholder(educationLabels[selections.education]));
 
     changeYou();
   }

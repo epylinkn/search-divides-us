@@ -29,7 +29,7 @@ class Profile extends GenericScene {
       squish(`Tell us about yourself so we can give you
       the best possible search experience.`),
       width/2,
-      height/4 - 50
+      height/4 - 55
     );
 
     tint(255, 255);  // Display at FULL opacity

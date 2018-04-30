@@ -28,10 +28,10 @@ let incomeValues = [
   "upper",
 ];
 let incomeLabels = [
-  "lower class",
-  "middle class",
-  "upper middle class",
-  "upper class",
+  "lower",
+  "middle",
+  "upper middle",
+  "upper",
 ];
 let raceValues = [
   "black",
@@ -55,7 +55,7 @@ let educationValues = [
   "advanced",
 ];
 let educationLabels = [
-  "below high school",
+  "some high school",
   "high school",
   "some college",
   "Bachelor's Degree",

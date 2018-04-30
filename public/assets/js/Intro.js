@@ -1,14 +1,14 @@
 class Intro extends GenericScene {
   setup() {
     this.fadeTime = 2*1000;
-
-    this.drawOnce();
   }
 
   enter() {
     super.enter()
     this.enteredAt = millis();
     this.fadeInAt = this.enteredAt + 3*1000;
+
+    this.drawOnce();
   }
 
   drawOnce() {

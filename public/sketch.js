@@ -73,6 +73,7 @@ let sceneLookup = {
   RandomGame: RandomGame,
   Outro: Outro
 }
+let mapTeaser;
 
 function preload(){
   roboto = loadFont('assets/fonts/RobotoMono.ttf');
@@ -84,7 +85,6 @@ function preload(){
 
   //map and browser frame
   mapImage = loadImage('assets/images/map.png');
-  mapTeaser = loadGif('assets/images/map_teaser.gif');
 
   browser = loadImage('assets/images/browser.png')
 
@@ -130,13 +130,22 @@ function preload(){
     loadImage('assets/images/randommask1.png'),
   ]
 
-
   soundFormats('mp3', 'ogg');
   buttonSound = loadSound('assets/sounds/game-sound-correct-131660.mp3');
   // buttonSound = loadSound('assets/sounds/acme-siren-331610.mp3');
   // buttonSound = loadSound('assets/sounds/pipe9-13290.mp3');
 
   randomSound = loadSound('assets/sounds/slot-payoff-69690.mp3');
+
+  // mapTeaser = loadGif('assets/images/map_teaser.gif');
+  mapTeaser = [
+    loadImage('assets/images/teaser/map_teaser1.png'),
+    loadImage('assets/images/teaser/map_teaser2.png'),
+    loadImage('assets/images/teaser/map_teaser3.png'),
+    loadImage('assets/images/teaser/map_teaser4.png'),
+    loadImage('assets/images/teaser/map_teaser5.png'),
+    loadImage('assets/images/teaser/map_teaser6.png'),
+  ]
 }
 
 function setup() {
@@ -188,6 +197,10 @@ function draw() {
 }
 
 function mousePressed() {
+  if (getAudioContext().state !== 'running') {
+    getAudioContext().resume()
+  }
+
   mgr.mousePressed();
 }
 

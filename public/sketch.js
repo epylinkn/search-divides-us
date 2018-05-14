@@ -197,6 +197,10 @@ function draw() {
 }
 
 function mousePressed() {
+  if (getAudioContext().state !== 'running') {
+    getAudioContext().resume()
+  }
+
   mgr.mousePressed();
 }
 

@@ -23,7 +23,7 @@ class Profile extends GenericScene {
 
     imageMode(CENTER);
     fill(255);
-    textSize(16);
+    textSize(18);
     textLeading(28);
     text(
       squish(`Tell us about yourself so we can give you

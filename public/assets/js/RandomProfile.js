@@ -18,15 +18,10 @@ class RandomProfile extends GenericScene {
     clearTimeout(this.stopPulsingTimer);
     clearTimeout(this.sceneEndTimer);
 
-    this.stopRandomizing = false;
     this.stopPulsing = false;
   }
 
   draw() {
-    if (frameCount % 20 == 0) {
-      this.randomizeSelections();
-    }
-
     background(browser,1);
     fill(255);
 
@@ -40,14 +35,12 @@ class RandomProfile extends GenericScene {
   }
 
   getProfileSize() {
-    if (!this.stopRandomizing || this.stopPulsing) return 220;
+    if (this.stopPulsing) return 220;
 
     return 220 + 20 * sin(millis() / 100)
   }
 
   soundEndHandler() {
-    this.stopRandomizing = true;
-
     this.stopPulsingTimer = setTimeout(function() {
       this.stopPulsing = true;
     }.bind(this), 2000);
@@ -57,35 +50,70 @@ class RandomProfile extends GenericScene {
     }, 3000);
   }
 
-  randomizeSelections() {
-    if (this.stopRandomizing) {
-      return;
+  keyPressed() {
+    switch(key) {
+      //== Income
+      case 'Q':
+        selections.income = 0;
+        this.incomeLabel.html(incomeLabels[selections.income]);
+        break;
+      case 'W':
+        selections.income = 1;
+        this.incomeLabel.html(incomeLabels[selections.income]);
+        break;
+      case 'E':
+        selections.income = 2;
+        this.incomeLabel.html(incomeLabels[selections.income]);
+        break;
+      case 'R':
+        selections.income = 3;
+        this.incomeLabel.html(incomeLabels[selections.income]);
+        break;
+
+      //== Race
+      case 'A':
+        selections.race = 0;
+        this.raceLabel.html(raceLabels[selections.race]);
+        break;
+      case 'S':
+        selections.race = 4;
+        this.raceLabel.html(raceLabels[selections.race]);
+        break;
+      case 'D':
+        selections.race = 3;
+        this.raceLabel.html(raceLabels[selections.race]);
+        break;
+      case 'F':
+        selections.race = 1;
+        this.raceLabel.html(raceLabels[selections.race]);
+        break;
+      case 'G':
+        selections.race = 2;
+        this.raceLabel.html(raceLabels[selections.race]);
+        break;
+
+      //== Education
+      case 'Z':
+        selections.education = 0;
+        this.educationLabel.html(educationLabels[selections.education]);
+        break;
+      case 'X':
+        selections.education = 1;
+        this.educationLabel.html(educationLabels[selections.education]);
+        break;
+      case 'C':
+        selections.education = 2;
+        this.educationLabel.html(educationLabels[selections.education]);
+        break;
+      case 'V':
+        selections.education = 3;
+        this.educationLabel.html(educationLabels[selections.education]);
+        break;
+      case 'B':
+        selections.education = 4;
+        this.educationLabel.html(educationLabels[selections.education]);
+        break;
     }
 
-    let newIncomeSelection;
-    let newRaceSelection;
-    let newEducationSelection;
-
-    do {
-      newIncomeSelection = incomeValues.indexOf(random(incomeValues))
-    } while (newIncomeSelection == selections.income)
-
-    do {
-      newRaceSelection = raceValues.indexOf(random(raceValues))
-    } while (newRaceSelection == selections.race)
-
-    do {
-      newEducationSelection = educationValues.indexOf(random(educationValues))
-    } while (newEducationSelection == selections.education)
-
-    selections.income = newIncomeSelection;
-    selections.race = newRaceSelection;
-    selections.education = newEducationSelection;
-
-    this.incomeLabel.html(incomeLabels[selections.income]);
-    this.raceLabel.html(raceLabels[selections.race]);
-    this.educationLabel.html(educationLabels[selections.education]);
-
     changeYou();
-  }
-}
+  }}

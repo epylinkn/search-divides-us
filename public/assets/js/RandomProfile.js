@@ -10,6 +10,8 @@ class RandomProfile extends GenericScene {
     randomSound.onended(this.soundEndHandler.bind(this));
     randomSound.play();
     select(".foo").show();
+
+    this.randomizing = true;
   }
 
   leave() {
@@ -35,12 +37,14 @@ class RandomProfile extends GenericScene {
   }
 
   getProfileSize() {
-    if (this.stopPulsing) return 220;
+    if (this.randomizing || this.stopPulsing) return 220;
 
     return 220 + 20 * sin(millis() / 100)
   }
 
   soundEndHandler() {
+    this.randomizing = false;
+
     this.stopPulsingTimer = setTimeout(function() {
       this.stopPulsing = true;
     }.bind(this), 2000);

@@ -81,11 +81,11 @@ class Profile extends GenericScene {
         this.raceLabel.html(raceLabels[selections.race]);
         break;
       case 'S':
-        selections.race = 4;
+        selections.race = 3;
         this.raceLabel.html(raceLabels[selections.race]);
         break;
       case 'D':
-        selections.race = 3;
+        selections.race = 4;
         this.raceLabel.html(raceLabels[selections.race]);
         break;
       case 'F':

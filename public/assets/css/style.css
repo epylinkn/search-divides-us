@@ -43,7 +43,6 @@ html, body {
   color:black;
   padding:10px;
   border-radius: 5px;
-
 }
 
 #inc-label {
@@ -51,14 +50,11 @@ html, body {
   padding:10px;
   border-radius: 5px;
   color:black;
-
-
 }
 
 #edu-label {
-  background: #e89952;
+  background: #e291cb;
   padding:10px;
   border-radius: 5px;
   color:black;
-
 }

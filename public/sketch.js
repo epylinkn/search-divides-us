@@ -1,4 +1,4 @@
-let portName = '/dev/cu.usbmodem14321';
+let portName = '/dev/cu.usbmodem14311';
 let options = { baudrate: 115200 };
 let serial;
 

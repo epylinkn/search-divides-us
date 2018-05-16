@@ -67,7 +67,7 @@ let sceneLookup = {
   Profile: Profile,
   Searching: Searching,
   Game: Game,
-  Explore: Explore,
+  // Explore: Explore,
   Prompt: Prompt,
   RandomProfile: RandomProfile,
   RandomGame: RandomGame,
@@ -175,7 +175,7 @@ function setup() {
   mgr.addScene(Profile);
   mgr.addScene(Searching);
   mgr.addScene(Game);
-  mgr.addScene(Explore);
+  // mgr.addScene(Explore);
   mgr.addScene(Prompt);
   mgr.addScene(RandomProfile);
   mgr.addScene(RandomGame);

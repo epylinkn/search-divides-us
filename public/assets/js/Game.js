@@ -20,7 +20,7 @@ class Game extends GenericScene {
     switch(key) {
       case 'O':
         buttonSound.play();
-        this.sceneManager.showScene(Explore);
+        this.sceneManager.showScene(Prompt);
         break;
       }
     }

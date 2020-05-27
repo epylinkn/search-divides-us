@@ -10,6 +10,6 @@ app.use(express.static('public'));
 app.use('/scripts', express.static(__dirname + '/node_modules/'))
 
 //== Serial setup
-let serialserver = require('p5.serialserver');
-serialserver.start();
-console.log("p5.serialserver is running");
+//let serialserver = require('p5.serialserver');
+//serialserver.start();
+//console.log("p5.serialserver is running");

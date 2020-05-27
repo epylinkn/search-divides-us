@@ -1,6 +1,6 @@
 let portName = '/dev/cu.usbmodem14311';
 let options = { baudrate: 115200 };
-let serial;
+// let serial;
 
 let mgr;
 let you;
@@ -151,15 +151,15 @@ function preload(){
 function setup() {
   mgr = new SceneManager();
 
-  serial = new p5.SerialPort();
-  serial.on('open', portOpen);
-  serial.on('error', serialError);
-  serial.on('data', serialEvent);
-  serial.on('close', portClose);
-
-  serial.list();
-  serial.open(portName, options);
-  serial.clear();
+  // serial = new p5.SerialPort();
+  // serial.on('open', portOpen);
+  // serial.on('error', serialError);
+  // serial.on('data', serialEvent);
+  // serial.on('close', portClose);
+  //
+  // serial.list();
+  // serial.open(portName, options);
+  // serial.clear();
 
   createCanvas(1350, 885);
 
@@ -275,22 +275,22 @@ function button(x,y, buttonText){
   pop();
 }
 
-function portOpen() {
-  print('the serial port opened.')
-}
+// function portOpen() {
+//   print('the serial port opened.')
+// }
 
-function serialError(err) {
-  print('Something went wrong with the serial port. ' + err);
-}
+// function serialError(err) {
+//   print('Something went wrong with the serial port. ' + err);
+// }
 
-function portClose() {
-  print('The serial port closed.');
-}
+// function portClose() {
+//   print('The serial port closed.');
+// }
 
-function serialEvent() {
-  // NB. Broadcast what arduino repeats back!
-  print(serial.readLine())
-}
+// function serialEvent() {
+//   // NB. Broadcast what arduino repeats back!
+//   print(serial.readLine())
+// }
 
 // Utilities
 function squish(str) {

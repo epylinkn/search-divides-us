@@ -1,7 +1,6 @@
 
 @font-face {
-font-family: "Roboto";
-src: url("../fonts/RobotoMono.ttf");
+  font-family: 'Roboto', monospace;
 }
 
 
@@ -10,6 +9,11 @@ html, body {
   padding: 0;
   height:885px;
   background-color: black;
+}
+
+html {
+  margin-top: 48px;
+  margin-left: 180px;
 }
 
 .model-trainer-form {
@@ -26,8 +30,8 @@ html, body {
 .foo {
   display: none;
   position: absolute;
-  top: 530px;
-  left: 0;
+  top: 580px;
+  left: 180px;
   right: 0;
   width:1350px;
 

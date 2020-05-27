@@ -1,7 +1,7 @@
 class RandomGame extends GenericScene {
   enter() {
     super.enter()
-    this.autoRestart = setTimeout(restartGame, 10 * 1000);
+    this.autoRestart = setTimeout(restartGame, 30 * 1000);
 
     this.drawOnce()
   }
